@@ -1,26 +1,139 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FBF5EF;
+  --foreground: #3d2c2c;
+
+  /* Wedding palette */
+  --blush: #F4D6C7;
+  --peach: #E8A898;
+  --cream: #FBF5EF;
+  --sage: #8B9D77;
+  --dusty-rose: #C4849A;
+  --wine: #8B3A52;
+  --light-gold: #D4AF7A;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-blush: var(--blush);
+  --color-peach: var(--peach);
+  --color-cream: var(--cream);
+  --color-sage: var(--sage);
+  --color-dusty-rose: var(--dusty-rose);
+  --color-wine: var(--wine);
+  --color-gold: var(--light-gold);
+  --font-cormorant: var(--font-cormorant);
+  --font-lato: var(--font-lato);
+  /* Tailwind font-{name} utility classes */
+  --font-family-cormorant: var(--font-cormorant), serif;
+  --font-family-lato: var(--font-lato), sans-serif;
+  --font-family-script: var(--font-cormorant), serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-lato), sans-serif;
+  overflow-x: hidden;
 }
+
+/* Font utility classes used in components */
+.font-script {
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+}
+
+.font-cormorant {
+  font-family: var(--font-cormorant), serif;
+}
+
+.font-lato {
+  font-family: var(--font-lato), sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--peach);
+  border-radius: 3px;
+}
+
+/* Smooth section transitions */
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+
+:root {
+  --background: #FBF5EF;
+  --foreground: #3d2c2c;
+
+  /* Wedding palette */
+  --blush: #F4D6C7;
+  --peach: #E8A898;
+  --cream: #FBF5EF;
+  --sage: #8B9D77;
+  --dusty-rose: #C4849A;
+  --wine: #8B3A52;
+  --light-gold: #D4AF7A;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-blush: var(--blush);
+  --color-peach: var(--peach);
+  --color-cream: var(--cream);
+  --color-sage: var(--sage);
+  --color-dusty-rose: var(--dusty-rose);
+  --color-wine: var(--wine);
+  --color-gold: var(--light-gold);
+  --font-cormorant: var(--font-cormorant);
+  --font-lato: var(--font-lato);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-lato), sans-serif;
+  overflow-x: hidden;
+}
+
+.font-script {
+  font-family: var(--font-cormorant), serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--peach);
+  border-radius: 3px;
+}
+
+/* Smooth section transitions */
+section {
+  position: relative;
+  overflow: hidden;
+}
+
