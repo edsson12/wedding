@@ -54,7 +54,7 @@
       {
         "label": "Alojamiento",
         "title": "Zonas recomendadas",
-        "body": "Centro histórico de Zaragoza\nBarrio El Gancho · Zona Universidades",
+        "body": "Centro histórico de Zaragoza\nZona Plaza de Ropa · Zona Universidades",
         "sub": "Hoteles, apartamentos y pensiones para todos los bolsillos",
         "linkText": "Buscar alojamiento"
       },
@@ -160,5 +160,65 @@
     "errorAttending": "Por favor indica si asistirás o no",
     "errorName": "Por favor escribe tu nombre",
     "errorConnection": "Error de conexión"
+  },
+  "quizCta": {
+    "subtitle": "Una prueba especial para vosotros",
+    "title": "¿Cuánto nos conocéis?",
+    "description": "Poneos a prueba y demostrad cuánto sabéis sobre Vale y Edu. El que más sepa... ¡se lleva un premio en la boda! 🏆",
+    "button": "Jugar ahora",
+    "ranking": "Ver el ranking"
+  },
+  "quiz": {
+    "pageTitle": "¿Cuánto nos conoces?",
+    "pageSubtitle": "El quiz de los novios · Vale & Edu · 25 julio 2026",
+    "identify": {
+      "title": "¡Identifícate!",
+      "subtitle": "Introduce tu correo y nombre para empezar",
+      "emailLabel": "Tu correo electrónico",
+      "emailPlaceholder": "tu@correo.com",
+      "nameLabel": "Tu nombre",
+      "namePlaceholder": "Nombre y apellidos",
+      "start": "Empezar el quiz 💍",
+      "checking": "Verificando...",
+      "attemptsLeft_one": "Te queda {{count}} intento",
+      "attemptsLeft_other": "Te quedan {{count}} intentos",
+      "noAttempts": "Ya has agotado tus {{max}} intentos 😅",
+      "bestScore": "Tu mejor puntuación: {{score}} de {{total}}",
+      "retryButton": "Volver a intentarlo",
+      "rankingButton": "Ver el ranking"
+    },
+    "quiz": {
+      "progress": "Pregunta {{current}} de {{total}}",
+      "submitting": "Calculando resultado..."
+    },
+    "result": {
+      "title": "¡Resultado!",
+      "score": "{{score}} de {{total}} correctas",
+      "perfect": "¡Increíble! Sois almas gemelas de Vale y Edu 🥇",
+      "great": "¡Genial! Los conocéis muy bien 💕",
+      "good": "¡Bien! Pero aún hay secretos por descubrir 🌸",
+      "low": "Todavía nos queda mucho por contaros 😄",
+      "attemptsLeft": "Aún puedes intentarlo {{count}} vez más",
+      "noAttempts": "Has usado todos tus intentos",
+      "bestScore": "Tu mejor resultado: {{score}} de {{total}}",
+      "rankingButton": "Ver el ranking 🏆",
+      "retryButton": "Intentarlo de nuevo"
+    },
+    "ranking": {
+      "title": "Ranking de los más conocedores",
+      "subtitle": "¿Quién se llevará el premio de la boda? 🏆",
+      "position": "#",
+      "name": "Nombre",
+      "score": "Puntuación",
+      "empty": "Aún no hay resultados. ¡Sé el primero!",
+      "loading": "Cargando ranking..."
+    },
+    "errors": {
+      "notInvited": "Este correo no está en la lista de invitados.",
+      "notResponded": "Aún no has confirmado tu asistencia. Confirma primero y luego vuelve al quiz.",
+      "tooManyAttempts": "Ya has agotado tus intentos.",
+      "noQuestions": "El quiz no está disponible todavía.",
+      "generic": "Algo fue mal. Por favor inténtalo de nuevo."
+    }
   }
 }

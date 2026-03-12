@@ -54,7 +54,7 @@
       {
         "label": "Hébergement",
         "title": "Zones recommandées",
-        "body": "Centre historique de Saragosse\nQuartier El Gancho · Zone universitaire",
+        "body": "Centre historique de Saragosse\nZone Plaza de Ropa · Zone universitaire",
         "sub": "Hôtels, appartements et pensions pour tous les budgets",
         "linkText": "Trouver un hébergement"
       },
@@ -160,5 +160,65 @@
     "errorAttending": "Veuillez indiquer si vous assisterez ou non",
     "errorName": "Veuillez saisir votre nom",
     "errorConnection": "Erreur de connexion"
+  },
+  "quizCta": {
+    "subtitle": "Un défi spécial pour vous",
+    "title": "Nous connaissez-vous bien ?",
+    "description": "Testez vos connaissances sur Vale et Edu ! Le meilleur score remporte un prix lors du mariage ! 🏆",
+    "button": "Jouer maintenant",
+    "ranking": "Voir le classement"
+  },
+  "quiz": {
+    "pageTitle": "Nous connaissez-vous bien ?",
+    "pageSubtitle": "Le quiz des mariés · Vale & Edu · 25 juillet 2026",
+    "identify": {
+      "title": "Qui êtes-vous ?",
+      "subtitle": "Entrez votre e-mail et votre nom pour commencer",
+      "emailLabel": "Votre adresse e-mail",
+      "emailPlaceholder": "votre@email.com",
+      "nameLabel": "Votre nom",
+      "namePlaceholder": "Prénom et nom",
+      "start": "Commencer le quiz 💍",
+      "checking": "Vérification...",
+      "attemptsLeft_one": "Il vous reste {{count}} tentative",
+      "attemptsLeft_other": "Il vous reste {{count}} tentatives",
+      "noAttempts": "Vous avez utilisé toutes vos {{max}} tentatives 😅",
+      "bestScore": "Votre meilleur score : {{score}} sur {{total}}",
+      "retryButton": "Réessayer",
+      "rankingButton": "Voir le classement"
+    },
+    "quiz": {
+      "progress": "Question {{current}} sur {{total}}",
+      "submitting": "Calcul du résultat..."
+    },
+    "result": {
+      "title": "Résultat !",
+      "score": "{{score}} sur {{total}} correctes",
+      "perfect": "Incroyable ! Vous faites pratiquement partie du couple 🥇",
+      "great": "Brillant ! Vous les connaissez très bien 💕",
+      "good": "Bien ! Mais il reste encore des secrets à découvrir 🌸",
+      "low": "Nous avons encore beaucoup à vous raconter 😄",
+      "attemptsLeft": "Vous pouvez encore essayer {{count}} fois",
+      "noAttempts": "Vous avez utilisé toutes vos tentatives",
+      "bestScore": "Votre meilleur résultat : {{score}} sur {{total}}",
+      "rankingButton": "Voir le classement 🏆",
+      "retryButton": "Réessayer"
+    },
+    "ranking": {
+      "title": "Classement des meilleurs",
+      "subtitle": "Qui remportera le prix du mariage ? 🏆",
+      "position": "#",
+      "name": "Nom",
+      "score": "Score",
+      "empty": "Pas encore de résultats. Soyez le premier !",
+      "loading": "Chargement du classement..."
+    },
+    "errors": {
+      "notInvited": "Cet e-mail ne figure pas sur la liste des invités.",
+      "notResponded": "Vous n'avez pas encore confirmé votre présence. Confirmez d'abord puis revenez au quiz.",
+      "tooManyAttempts": "Vous avez utilisé toutes vos tentatives.",
+      "noQuestions": "Le quiz n'est pas encore disponible.",
+      "generic": "Quelque chose s'est mal passé. Veuillez réessayer."
+    }
   }
 }

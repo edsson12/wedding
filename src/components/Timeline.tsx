@@ -16,7 +16,6 @@ interface EventCard {
 }
 
 const EVENT_META = [
-  { time: "16:00 h", emoji: "💍", accent: "#9B6B7E", bg: "from-[#9B6B7E] to-[#b5808e]", eventKey: "ceremony" },
   { time: "20:00 h", emoji: "🥂", accent: "#C98FA0", bg: "from-[#C98FA0] to-[#d9a8b8]", eventKey: "cocktail" },
   { time: "21:00 h", emoji: "🍽️", accent: "#D4A0AE", bg: "from-[#D4A0AE] to-[#e4b8c4]", eventKey: "dinner" },
   { time: "23:00 h", emoji: "🎉", accent: "#B07888", bg: "from-[#B07888] to-[#c4909c]", eventKey: "party" },

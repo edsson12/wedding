@@ -7,6 +7,7 @@ import Countdown from "@/components/Countdown";
 import Timeline from "@/components/Timeline";
 import WhenWhere from "@/components/WhenWhere";
 import GiftSection from "@/components/GiftSection";
+import QuizCTA from "@/components/QuizCTA";
 import InvitationCTA from "@/components/InvitationCTA";
 import Footer from "@/components/Footer";
 
@@ -68,6 +69,7 @@ export default function Home() {
         <Slide tall><Timeline /></Slide>
         <Slide tall><WhenWhere /></Slide>
         <Slide><GiftSection /></Slide>
+        <Slide><QuizCTA /></Slide>
         <Slide><InvitationCTA /></Slide>
         <Slide><Footer /></Slide>
       </div>

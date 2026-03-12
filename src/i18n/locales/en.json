@@ -54,7 +54,7 @@
       {
         "label": "Accommodation",
         "title": "Recommended areas",
-        "body": "Historic centre of Zaragoza\nEl Gancho Quarter · University area",
+        "body": "Historic centre of Zaragoza\nPlaza de Ropa area · University area",
         "sub": "Hotels, apartments and guesthouses for every budget",
         "linkText": "Find accommodation"
       },
@@ -160,5 +160,65 @@
     "errorAttending": "Please indicate whether you will attend or not",
     "errorName": "Please enter your name",
     "errorConnection": "Connection error"
+  },
+  "quizCta": {
+    "subtitle": "A special challenge just for you",
+    "title": "How well do you know us?",
+    "description": "Test your knowledge of Vale and Edu! The highest scorer wins a prize at the wedding! 🏆",
+    "button": "Play now",
+    "ranking": "View ranking"
+  },
+  "quiz": {
+    "pageTitle": "How well do you know us?",
+    "pageSubtitle": "The couple's quiz · Vale & Edu · 25 July 2026",
+    "identify": {
+      "title": "Who are you?",
+      "subtitle": "Enter your email and name to start",
+      "emailLabel": "Your email address",
+      "emailPlaceholder": "your@email.com",
+      "nameLabel": "Your name",
+      "namePlaceholder": "First and last name",
+      "start": "Start the quiz 💍",
+      "checking": "Checking...",
+      "attemptsLeft_one": "You have {{count}} attempt left",
+      "attemptsLeft_other": "You have {{count}} attempts left",
+      "noAttempts": "You've used all your {{max}} attempts 😅",
+      "bestScore": "Your best score: {{score}} out of {{total}}",
+      "retryButton": "Try again",
+      "rankingButton": "See the ranking"
+    },
+    "quiz": {
+      "progress": "Question {{current}} of {{total}}",
+      "submitting": "Calculating result..."
+    },
+    "result": {
+      "title": "Result!",
+      "score": "{{score}} out of {{total}} correct",
+      "perfect": "Amazing! You're practically part of the couple 🥇",
+      "great": "Brilliant! You know them really well 💕",
+      "good": "Good! But there are still secrets to discover 🌸",
+      "low": "We still have a lot to tell you 😄",
+      "attemptsLeft": "You can try {{count}} more time",
+      "noAttempts": "You've used all your attempts",
+      "bestScore": "Your best result: {{score}} out of {{total}}",
+      "rankingButton": "View ranking 🏆",
+      "retryButton": "Try again"
+    },
+    "ranking": {
+      "title": "Top Scorers Ranking",
+      "subtitle": "Who will win the wedding prize? 🏆",
+      "position": "#",
+      "name": "Name",
+      "score": "Score",
+      "empty": "No results yet. Be the first!",
+      "loading": "Loading ranking..."
+    },
+    "errors": {
+      "notInvited": "This email is not on the guest list.",
+      "notResponded": "You haven't confirmed your attendance yet. Please confirm first and then come back to the quiz.",
+      "tooManyAttempts": "You've used all your attempts.",
+      "noQuestions": "The quiz is not available yet.",
+      "generic": "Something went wrong. Please try again."
+    }
   }
 }

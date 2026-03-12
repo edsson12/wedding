@@ -10,7 +10,7 @@ export default function GiftSection() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [copied, setCopied] = useState(false);
 
-  const iban = "ES21 1234 5678 9012 3456 7890";
+  const iban = "FR76 4061 8803 6800 0408 6218 304";
 
   function handleCopy() {
     navigator.clipboard.writeText(iban.replace(/\s/g, "")).then(() => {
@@ -118,12 +118,12 @@ export default function GiftSection() {
           <div className="relative z-10 p-7 text-left text-white">
             <div className="flex items-center gap-2 mb-6">
               <div className="w-10 h-7 rounded bg-[#F5D5DA]/40 border border-white/20" />
-              <span className="text-white/70 text-xs tracking-widest uppercase font-light">Banco Mandanga</span>
+              <span className="text-white/70 text-xs tracking-widest uppercase font-light">Boursorama</span>
             </div>
 
             <div className="mb-4">
               <p className="text-white/60 text-[10px] uppercase tracking-widest mb-1" style={{ fontWeight: 300 }}>{t("gift.ibanLabel")}</p>
-              <p className="text-white text-lg sm:text-xl tracking-wider" style={{ fontFamily: "var(--font-montserrat), monospace", fontWeight: 400, letterSpacing: "0.12em" }}>
+              <p className="text-white text-base tracking-wider break-all" style={{ fontFamily: "var(--font-montserrat), monospace", fontWeight: 400, letterSpacing: "0.08em" }}>
                 {iban}
               </p>
             </div>
