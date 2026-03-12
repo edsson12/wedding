@@ -9,6 +9,9 @@ interface Invitation {
   status: "pending" | "accepted" | "declined";
   guestName?: string;
   companions: number;
+  allergy?: string;
+  intolerance?: string;
+  specialDiet?: string;
   song?: string;
   message?: string;
   sentAt: string;
@@ -46,6 +49,8 @@ export default function DashboardPage() {
   const [sending, setSending] = useState(false);
   const [sendResults, setSendResults] = useState<{ email: string; status: string; reason?: string }[]>([]);
   const [loggingOut, setLoggingOut] = useState(false);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [deleting, setDeleting] = useState(false);
 
   const fetchStats = useCallback(async () => {
     const res = await fetch("/api/invitations/stats");
@@ -92,12 +97,44 @@ export default function DashboardPage() {
     }
   }
 
+  const allSelected = invitations.length > 0 && invitations.every((inv) => selectedIds.has(inv._id));
+
+  function toggleSelect(id: string) {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  }
+
+  function toggleSelectAll() {
+    setSelectedIds(allSelected ? new Set() : new Set(invitations.map((inv) => inv._id)));
+  }
+
+  async function handleDelete(ids: string[]) {
+    if (!ids.length) return;
+    if (!confirm(`¿Eliminar ${ids.length} invitación${ids.length !== 1 ? "es" : ""}? Esta acción no se puede deshacer.`)) return;
+    setDeleting(true);
+    try {
+      await fetch("/api/invitations", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ids }),
+      });
+      setSelectedIds(new Set());
+      fetchStats();
+      fetchInvitations();
+    } finally {
+      setDeleting(false);
+    }
+  }
+
   return (
-    <div style={{ minHeight: "100vh", background: "#FBF5EF", fontFamily: "Arial, sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "#FBF5EF" }}>
       {/* Top nav */}
       <header style={{ background: "linear-gradient(135deg,#5a1e30,#8B3A52)", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: "64px" }}>
         <div>
-          <span style={{ color: "#fff", fontSize: "18px", fontFamily: "Georgia,serif" }}>Vale & Edu</span>
+          <span style={{ color: "#fff", fontSize: "22px", fontFamily: "var(--font-parisienne), cursive" }}>Vale & Edu</span>
           <span style={{ color: "#F4D6C7", fontSize: "13px", marginLeft: "12px", letterSpacing: "1px" }}>· Panel de gestión</span>
         </div>
         <button
@@ -131,7 +168,7 @@ export default function DashboardPage() {
 
         {/* Send invitations */}
         <div style={{ background: "#fff", borderRadius: "16px", padding: "28px", boxShadow: "0 2px 12px rgba(139,58,82,0.08)", marginBottom: "32px" }}>
-          <h2 style={{ color: "#8B3A52", fontSize: "18px", margin: "0 0 16px", fontFamily: "Georgia,serif", fontWeight: 400 }}>
+          <h2 style={{ color: "#8B3A52", fontSize: "18px", margin: "0 0 16px", fontFamily: "var(--font-parisienne), cursive", fontWeight: 400 }}>
             📨 Enviar invitaciones
           </h2>
           <form onSubmit={handleSendInvitations}>
@@ -170,7 +207,7 @@ export default function DashboardPage() {
 
         {/* Guest list */}
         <div style={{ background: "#fff", borderRadius: "16px", padding: "28px", boxShadow: "0 2px 12px rgba(139,58,82,0.08)" }}>
-          <h2 style={{ color: "#8B3A52", fontSize: "18px", margin: "0 0 20px", fontFamily: "Georgia,serif", fontWeight: 400 }}>
+          <h2 style={{ color: "#8B3A52", fontSize: "18px", margin: "0 0 20px", fontFamily: "var(--font-parisienne), cursive", fontWeight: 400 }}>
             👥 Lista de invitados
           </h2>
 
@@ -198,13 +235,48 @@ export default function DashboardPage() {
                   color: filter === s ? "#fff" : "#8B3A52",
                   fontSize: "13px",
                   cursor: "pointer",
-                  fontFamily: "Arial,sans-serif",
+
                 }}
               >
                 {s === "all" ? "Todos" : STATUS_LABEL[s]}
               </button>
             ))}
           </div>
+
+          {/* Select all / bulk action bar */}
+          {invitations.length > 0 && (
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", padding: "8px 4px", marginBottom: "4px" }}>
+              <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer", fontSize: "13px", color: "#999", userSelect: "none" }}>
+                <input
+                  type="checkbox"
+                  checked={allSelected}
+                  onChange={toggleSelectAll}
+                  style={{ width: "16px", height: "16px", accentColor: "#8B3A52", cursor: "pointer" }}
+                />
+                {allSelected ? "Deseleccionar todo" : "Seleccionar todo"}
+              </label>
+              {selectedIds.size > 0 && (
+                <>
+                  <span style={{ color: "#8B3A52", fontSize: "13px" }}>
+                    · {selectedIds.size} seleccionada{selectedIds.size !== 1 ? "s" : ""}
+                  </span>
+                  <button
+                    onClick={() => handleDelete([...selectedIds])}
+                    disabled={deleting}
+                    style={{ marginLeft: "auto", background: "#C4849A", color: "#fff", border: "none", padding: "7px 18px", borderRadius: "20px", fontSize: "13px", cursor: deleting ? "not-allowed" : "pointer", opacity: deleting ? 0.7 : 1 }}
+                  >
+                    {deleting ? "Eliminando..." : "🗑️ Eliminar seleccionadas"}
+                  </button>
+                  <button
+                    onClick={() => setSelectedIds(new Set())}
+                    style={{ background: "transparent", border: "none", color: "#999", fontSize: "13px", cursor: "pointer", padding: "0" }}
+                  >
+                    Cancelar
+                  </button>
+                </>
+              )}
+            </div>
+          )}
 
           {/* List */}
           {invitations.length === 0 ? (
@@ -219,6 +291,13 @@ export default function DashboardPage() {
                   onClick={() => setExpanded(expanded === inv._id ? null : inv._id)}
                   style={{ display: "flex", alignItems: "center", gap: "12px", padding: "14px 16px", cursor: "pointer", background: expanded === inv._id ? "#FBF5EF" : "#fff" }}
                 >
+                  <input
+                    type="checkbox"
+                    checked={selectedIds.has(inv._id)}
+                    onClick={(e) => e.stopPropagation()}
+                    onChange={() => toggleSelect(inv._id)}
+                    style={{ width: "16px", height: "16px", cursor: "pointer", accentColor: "#8B3A52", flexShrink: 0 }}
+                  />
                   <div style={{ width: "10px", height: "10px", borderRadius: "50%", background: STATUS_COLOR[inv.status], flexShrink: 0 }} />
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ fontWeight: "bold", color: "#333", fontSize: "14px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
@@ -237,11 +316,22 @@ export default function DashboardPage() {
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(200px,1fr))", gap: "12px" }}>
                       <Detail label="Email" value={inv.email} />
                       <Detail label="Estado" value={STATUS_LABEL[inv.status]} />
-                      <Detail label="Acompañantes" value={String(inv.companions)} />
                       <Detail label="Enviado" value={new Date(inv.sentAt).toLocaleDateString("es-ES")} />
                       {inv.respondedAt && <Detail label="Respondió" value={new Date(inv.respondedAt).toLocaleDateString("es-ES")} />}
+                      {inv.allergy && <Detail label="Alergias" value={`🚫 ${inv.allergy}`} />}
+                      {inv.intolerance && <Detail label="Intolerancias" value={`⚠️ ${inv.intolerance}`} />}
+                      {inv.specialDiet && <Detail label="Dieta especial" value={`🌿 ${inv.specialDiet}`} />}
                       {inv.song && <Detail label="Canción" value={`🎵 ${inv.song}`} />}
                       {inv.message && <Detail label="Mensaje" value={`"${inv.message}"`} fullWidth />}
+                    </div>
+                    <div style={{ marginTop: "16px", display: "flex", justifyContent: "flex-end" }}>
+                      <button
+                        onClick={() => handleDelete([inv._id])}
+                        disabled={deleting}
+                        style={{ background: "transparent", border: "1px solid #C4849A", color: "#C4849A", padding: "7px 18px", borderRadius: "20px", fontSize: "13px", cursor: deleting ? "not-allowed" : "pointer" }}
+                      >
+                        🗑️ Eliminar invitación
+                      </button>
                     </div>
                   </div>
                 )}

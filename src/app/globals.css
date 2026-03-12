@@ -1,17 +1,26 @@
 @import "tailwindcss";
 
-:root {
-  --background: #FBF5EF;
-  --foreground: #3d2c2c;
+/* ── Full-page vertical carousel ──────────────────────────── */
+.slides-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.slides-container::-webkit-scrollbar {
+  display: none;
+}
 
-  /* Wedding palette */
-  --blush: #F4D6C7;
-  --peach: #E8A898;
-  --cream: #FBF5EF;
-  --sage: #8B9D77;
-  --dusty-rose: #C4849A;
-  --wine: #8B3A52;
-  --light-gold: #D4AF7A;
+:root {
+  --background: #FFFCFB;
+  --foreground: #6B4F57;
+
+  /* Botanical watercolor palette — warm blush rose + sage green */
+  --blush: #F5D5DA;
+  --peach: #EAB5BC;
+  --cream: #FBF0EE;
+  --sage: #8FAE9C;
+  --dusty-rose: #C98FA0;
+  --wine: #9B6B7E;
+  --light-gold: #D4A0AE;
 }
 
 @theme inline {
@@ -26,10 +35,14 @@
   --color-gold: var(--light-gold);
   --font-cormorant: var(--font-cormorant);
   --font-lato: var(--font-lato);
+  --font-parisienne: var(--font-parisienne);
+  --font-montserrat: var(--font-montserrat);
   /* Tailwind font-{name} utility classes */
   --font-family-cormorant: var(--font-cormorant), serif;
   --font-family-lato: var(--font-lato), sans-serif;
-  --font-family-script: var(--font-cormorant), serif;
+  --font-family-montserrat: var(--font-montserrat), sans-serif;
+  --font-family-script: var(--font-parisienne), cursive;
+  --font-family-parisienne: var(--font-parisienne), cursive;
 }
 
 html {
@@ -39,14 +52,14 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-lato), sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
+  font-weight: 300;
   overflow-x: hidden;
 }
 
 /* Font utility classes used in components */
 .font-script {
-  font-family: var(--font-cormorant), serif;
-  font-style: italic;
+  font-family: var(--font-parisienne), cursive;
 }
 
 .font-cormorant {
@@ -65,69 +78,7 @@ body {
   background: var(--cream);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--peach);
-  border-radius: 3px;
-}
-
-/* Smooth section transitions */
-section {
-  position: relative;
-  overflow: hidden;
-}
-
-
-:root {
-  --background: #FBF5EF;
-  --foreground: #3d2c2c;
-
-  /* Wedding palette */
-  --blush: #F4D6C7;
-  --peach: #E8A898;
-  --cream: #FBF5EF;
-  --sage: #8B9D77;
-  --dusty-rose: #C4849A;
-  --wine: #8B3A52;
-  --light-gold: #D4AF7A;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-blush: var(--blush);
-  --color-peach: var(--peach);
-  --color-cream: var(--cream);
-  --color-sage: var(--sage);
-  --color-dusty-rose: var(--dusty-rose);
-  --color-wine: var(--wine);
-  --color-gold: var(--light-gold);
-  --font-cormorant: var(--font-cormorant);
-  --font-lato: var(--font-lato);
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-lato), sans-serif;
-  overflow-x: hidden;
-}
-
-.font-script {
-  font-family: var(--font-cormorant), serif;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--cream);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--peach);
+  background: var(--dusty-rose);
   border-radius: 3px;
 }
 

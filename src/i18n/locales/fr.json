@@ -1,0 +1,164 @@
+{
+  "nav": {
+    "bigDay": "Le grand jour",
+    "program": "Programme",
+    "venue": "Lieu",
+    "gift": "Cadeau"
+  },
+  "hero": {
+    "label": "Notre mariage",
+    "scroll": "Défiler"
+  },
+  "countdown": {
+    "soon": "Plus que...",
+    "days": "Jours",
+    "hours": "Heures",
+    "minutes": "Minutes",
+    "seconds": "Secondes",
+    "title": "Avant de fêter ensemble !",
+    "date": "25 · Juillet · 2026 · Saragosse"
+  },
+  "timeline": {
+    "subtitle": "Le grand jour",
+    "title": "Programme du mariage",
+    "events": {
+      "ceremony": {
+        "title": "Cérémonie",
+        "description": "Le moment le plus spécial : nous nous disons oui, entourés des personnes qui nous sont les plus chères."
+      },
+      "cocktail": {
+        "title": "Cocktail",
+        "description": "Nous trinquons ensemble en plein air avec des coupes, de bonnes bouchées et de meilleures conversations."
+      },
+      "dinner": {
+        "title": "Dîner",
+        "description": "Un dîner préparé avec amour : le meilleur menu pour une soirée inoubliable."
+      },
+      "party": {
+        "title": "La fête toute la nuit !",
+        "description": "C'est l'heure de danser, de rire et de profiter à fond. C'est parti !"
+      }
+    }
+  },
+  "whenWhere": {
+    "subtitle": "Nous vous attendons ici",
+    "title": "Quand et Où",
+    "cards": [
+      {
+        "label": "Lieu de la fête",
+        "title": "Casalizio",
+        "body": "Restaurant · Spécialités de riz · Événements\nCam. la Raya, s/n\n50002 Saragosse, Espagne",
+        "sub": "25 juillet 2026 · 16h00",
+        "linkText": "Voir sur Google Maps"
+      },
+      {
+        "label": "Hébergement",
+        "title": "Zones recommandées",
+        "body": "Centre historique de Saragosse\nQuartier El Gancho · Zone universitaire",
+        "sub": "Hôtels, appartements et pensions pour tous les budgets",
+        "linkText": "Trouver un hébergement"
+      },
+      {
+        "label": "Comment y aller",
+        "title": "Rejoindre Saragosse",
+        "body": "TGV depuis Madrid (~1h 20)\nTGV depuis Barcelone (~1h 30)\nAéroport de Saragosse (ZAZ)",
+        "sub": "Saragosse est facilement accessible en train, avion ou voiture",
+        "linkText": "Réserver un train sur Renfe"
+      }
+    ],
+    "tipsTitle": "Que faire à Saragosse",
+    "tips": [
+      "Visitez la Basilique du Pilar, symbole de la ville",
+      "Goûtez le ternasco aragonais et les migas con chorizo",
+      "Promenez-vous dans le Parc José Antonio Labordeta",
+      "Shopping calle Alfonso I et El Coso",
+      "La vieille ville mérite une belle promenade"
+    ]
+  },
+  "gift": {
+    "title": "Vous souhaitez nous offrir un cadeau ?",
+    "p1": "Votre présence est déjà le plus beau cadeau que nous puissions imaginer. Vraiment.",
+    "p1italic": "Absolument vraiment.",
+    "p2": "Mais si vous insistez... qui sommes-nous pour vous priver de ce bonheur 😏",
+    "ibanLabel": "IBAN",
+    "holderLabel": "Titulaire",
+    "copy": "Copier",
+    "copied": "✓ Copié",
+    "footnote": "Et si le vin vient à manquer avant minuit, nous acceptons aussi les donations en nature. 🍷"
+  },
+  "cta": {
+    "title": "Vous avez reçu votre invitation ?",
+    "p1": "Vous recevrez bientôt un e-mail personnalisé avec votre lien de confirmation.",
+    "p2": "Si vous l'avez déjà reçu, utilisez le lien dans cet e-mail pour confirmer votre présence.",
+    "noEmail": "Vous n'avez pas reçu l'e-mail ? Écrivez-nous à"
+  },
+  "footer": {
+    "quote": "\"L'amour ne voit pas avec les yeux, mais avec l'esprit.\"",
+    "made": "Fait avec 🤍 pour notre mariage"
+  },
+  "rsvp": {
+    "subtitle": "Vous venez avec nous ?",
+    "title": "Confirmez votre présence",
+    "deadlinePre": "Merci de confirmer avant le",
+    "deadlineDate": "30 juin 2026",
+    "attending": "Serez-vous présent(e) à notre mariage ?",
+    "yes": "Oui, j'y serai ! 🥂",
+    "no": "Je ne pourrai pas venir",
+    "name": "Nom complet",
+    "namePlaceholder": "Vos nom et prénom",
+    "email": "Adresse e-mail",
+    "songLabel": "🎵 La chanson incontournable de la soirée",
+    "songPlaceholder": "Artiste — Chanson",
+    "messageLabel": "💌 Message pour Vale & Edu",
+    "messagePlaceholder": "Dites-nous quelque chose de beau... ou une demande spéciale 🤍",
+    "errorAttending": "Veuillez indiquer si vous assisterez au mariage.",
+    "submit": "Envoyer ma réponse",
+    "submitting": "Envoi en cours...",
+    "successTitle": "Merci beaucoup !",
+    "successText": "Nous avons bien reçu votre réponse. Un e-mail avec tous les détails vous a été envoyé.",
+    "successSub": "On vous attend au mariage ! 🤍",
+    "sendAnother": "Envoyer une autre réponse",
+    "errorGeneral": "Une erreur s'est produite lors de l'envoi. Veuillez réessayer."
+  },
+  "confirmar": {
+    "loading": "Chargement de votre invitation...",
+    "invalidLink": "Lien invalide",
+    "alreadyAccepted": "Vous avez déjà confirmé votre présence !",
+    "alreadyDeclined": "Vous nous avez déjà envoyé votre réponse",
+    "waitingAccepted": "Nous vous attendons avec impatience le 25 juillet 2026 ! 💕",
+    "waitingDeclined": "Merci de nous avoir prévenus. Vous serez dans nos pensées ce jour-là !",
+    "thanksAccepted": "Merci de votre confirmation !",
+    "thanksDeclined": "Merci de nous avoir prévenus !",
+    "acceptedMessageBold": "Nous sommes tellement heureux de vous avoir avec nous le 25 juillet 2026 à Saragosse !",
+    "acceptedMessageRest": "Il ne reste plus qu'à attendre avec joie. Avec tout notre amour, Vale & Edu 💍",
+    "declinedMessage": "Nous sommes désolés que vous ne puissiez pas être avec nous, mais vous serez très présents dans nos pensées ce jour-là. Avec toute notre affection, Vale & Edu 💕",
+    "discoverTitle": "✨ Vous voulez tout savoir sur le grand jour ?",
+    "discoverSub": "Le programme, le compte à rebours, le lieu et tous les détails vous attendent sur notre site. À ne pas manquer !",
+    "discoverCta": "Découvrez notre mariage →",
+    "greeting": "Bonjour{{email}}, nous sommes tellement heureux de vous compter parmi nous.",
+    "name": "Votre nom complet",
+    "namePlaceholder": "Prénom et nom",
+    "attending": "Serez-vous présent(e) au mariage ?",
+    "attendYes": "✅ Oui, j'y serai",
+    "attendNo": "❌ Je ne pourrai pas venir",
+    "dietary": "Restrictions alimentaires",
+    "dietaryOptional": "(facultatif)",
+    "allergies": "Allergies",
+    "allergiesPlaceholder": "Poisson, noix, fruits de mer...",
+    "intolerances": "Intolérances",
+    "intolerancesPlaceholder": "Lactose, gluten, fructose...",
+    "specialDiet": "Régime spécial",
+    "specialDietPlaceholder": "Végétarien, végétalien, halal...",
+    "song": "Quelle chanson est indispensable ? 🎵",
+    "songOptional": "(facultatif)",
+    "songPlaceholder": "Artiste — Chanson",
+    "message": "Message pour les mariés 💕",
+    "messageOptional": "(facultatif)",
+    "messagePlaceholder": "Écrivez quelque chose de beau pour Vale et Edu...",
+    "send": "Envoyer ma réponse →",
+    "sending": "Envoi en cours...",
+    "errorAttending": "Veuillez indiquer si vous assisterez ou non",
+    "errorName": "Veuillez saisir votre nom",
+    "errorConnection": "Erreur de connexion"
+  }
+}

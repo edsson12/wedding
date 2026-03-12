@@ -1,6 +1,20 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Lato } from "next/font/google";
+import { Cormorant_Garamond, Lato, Montserrat, Parisienne } from "next/font/google";
+import I18nProvider from "@/components/I18nProvider";
 import "./globals.css";
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+  weight: ["300", "400"],
+  style: ["normal", "italic"],
+});
+
+const parisienne = Parisienne({
+  variable: "--font-parisienne",
+  subsets: ["latin"],
+  weight: "400",
+});
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -28,9 +42,9 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${cormorant.variable} ${lato.variable} antialiased`}
+        className={`${montserrat.variable} ${parisienne.variable} ${cormorant.variable} ${lato.variable} antialiased`}
       >
-        {children}
+        <I18nProvider>{children}</I18nProvider>
       </body>
     </html>
   );

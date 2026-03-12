@@ -61,3 +61,14 @@ export async function POST(request: Request) {
 
   return NextResponse.json({ results });
 }
+
+// DELETE /api/invitations  body: { ids: string[] }
+export async function DELETE(request: Request) {
+  await connectDB();
+  const { ids } = await request.json();
+  if (!Array.isArray(ids) || ids.length === 0) {
+    return NextResponse.json({ error: "ids array required" }, { status: 400 });
+  }
+  await Invitation.deleteMany({ _id: { $in: ids } });
+  return NextResponse.json({ deleted: ids.length });
+}

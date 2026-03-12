@@ -2,40 +2,24 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import ScrollBouquets from "@/components/ScrollBouquets";
 
-const events = [
-  {
-    time: "16:00",
-    title: "Ceremonia",
-    description: "El momento más especial: nos damos el sí quiero rodeados de las personas que más queremos.",
-    emoji: "💍",
-    accent: "#8B3A52",
-    bg: "from-[#8B3A52] to-[#a05c72]",
-  },
-  {
-    time: "19:00",
-    title: "Cóctel",
-    description: "Brindamos juntos al aire libre con copas, buenos bocados y mejores conversaciones.",
-    emoji: "🥂",
-    accent: "#C4849A",
-    bg: "from-[#C4849A] to-[#d4a0b5]",
-  },
-  {
-    time: "21:00",
-    title: "Cena",
-    description: "Una cena pensada con cariño: el mejor menú para una noche que no olvidaremos.",
-    emoji: "🍽️",
-    accent: "#8B9D77",
-    bg: "from-[#8B9D77] to-[#a3b58f]",
-  },
-  {
-    time: "22:00",
-    title: "¡Fiesta toda la noche!",
-    description: "Llega el momento de bailar, reír y disfrutar hasta que el cuerpo aguante. ¡A por ello!",
-    emoji: "🎉",
-    accent: "#D4AF7A",
-    bg: "from-[#D4AF7A] to-[#e4c898]",
-  },
+interface EventCard {
+  time: string;
+  emoji: string;
+  accent: string;
+  bg: string;
+  eventKey: string;
+  title: string;
+  description: string;
+}
+
+const EVENT_META = [
+  { time: "16:00 h", emoji: "💍", accent: "#9B6B7E", bg: "from-[#9B6B7E] to-[#b5808e]", eventKey: "ceremony" },
+  { time: "20:00 h", emoji: "🥂", accent: "#C98FA0", bg: "from-[#C98FA0] to-[#d9a8b8]", eventKey: "cocktail" },
+  { time: "21:00 h", emoji: "🍽️", accent: "#D4A0AE", bg: "from-[#D4A0AE] to-[#e4b8c4]", eventKey: "dinner" },
+  { time: "23:00 h", emoji: "🎉", accent: "#B07888", bg: "from-[#B07888] to-[#c4909c]", eventKey: "party" },
 ];
 
 function DesktopCard({
@@ -44,7 +28,7 @@ function DesktopCard({
   isLeft,
   inView,
 }: {
-  event: (typeof events)[0];
+  event: EventCard;
   index: number;
   isLeft: boolean;
   inView: boolean;
@@ -95,7 +79,7 @@ function TimelineItem({
   index,
   isLast,
 }: {
-  event: (typeof events)[0];
+  event: EventCard;
   index: number;
   isLast: boolean;
 }) {
@@ -130,7 +114,7 @@ function TimelineItem({
             initial={{ scaleY: 0 }}
             animate={inView ? { scaleY: 1 } : {}}
             transition={{ duration: 0.6, delay: index * 0.15 + 0.4 }}
-            style={{ transformOrigin: "top", background: `linear-gradient(to bottom, ${event.accent}, ${events[index + 1]?.accent ?? event.accent}44)` }}
+            style={{ transformOrigin: "top", background: `linear-gradient(to bottom, ${event.accent}, ${EVENT_META[index + 1]?.accent ?? event.accent}44)` }}
             className="w-0.5 h-24"
           />
         )}
@@ -153,7 +137,7 @@ function MobileTimelineItem({
   index,
   isLast,
 }: {
-  event: (typeof events)[0];
+  event: EventCard;
   index: number;
   isLast: boolean;
 }) {
@@ -176,7 +160,7 @@ function MobileTimelineItem({
         {!isLast && (
           <div
             className="w-0.5 flex-1 min-h-8 mt-1"
-            style={{ background: `linear-gradient(to bottom, ${event.accent}88, ${events[index + 1]?.accent ?? event.accent}33)` }}
+            style={{ background: `linear-gradient(to bottom, ${event.accent}88, ${EVENT_META[index + 1]?.accent ?? event.accent}33)` }}
           />
         )}
       </div>
@@ -210,13 +194,21 @@ function MobileTimelineItem({
 }
 
 export default function Timeline() {
+  const { t } = useTranslation();
+  const events: EventCard[] = EVENT_META.map((m) => ({
+    ...m,
+    title: t(`timeline.events.${m.eventKey}.title`),
+    description: t(`timeline.events.${m.eventKey}.description`),
+  }));
   const titleRef = useRef<HTMLDivElement>(null);
   const titleInView = useInView(titleRef, { once: true, margin: "-80px" });
 
   return (
-    <section id="timeline" className="relative py-20 sm:py-28 bg-[#FBF5EF] overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30 blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(circle, #F4D6C7, transparent)" }} />
+    <motion.section id="timeline" className="relative min-h-full py-20 sm:py-28 bg-[#FBF0EE]" style={{ minHeight: '100vh' }}
+      initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.05 }} transition={{ duration: 0.8 }}>
+      <ScrollBouquets delay={0.2} set={1} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-20 blur-3xl pointer-events-none"
+        style={{ background: "radial-gradient(circle, #F5D5DA, transparent)" }} />
 
       <div className="max-w-5xl mx-auto px-6">
         {/* Header */}
@@ -225,23 +217,23 @@ export default function Timeline() {
             initial={{ opacity: 0, y: 15 }}
             animate={titleInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="font-script italic text-2xl sm:text-3xl text-[#C4849A] mb-2"
+            className="text-xl sm:text-2xl text-[#C98FA0] mb-2 italic"
           >
-            El gran día
+            {t("timeline.subtitle")}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
             animate={titleInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-script text-4xl sm:text-5xl md:text-6xl text-[#8B3A52] font-semibold"
+            className="font-script text-4xl sm:text-5xl md:text-6xl text-[#9B6B7E] font-semibold"
           >
-            Programa de la boda
+            {t("timeline.title")}
           </motion.h2>
           <motion.div
             initial={{ scaleX: 0 }}
             animate={titleInView ? { scaleX: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="mt-4 h-px w-24 bg-[#E8A898] mx-auto"
+            className="mt-4 h-px w-24 bg-[#EAB5BC] mx-auto"
           />
         </div>
 
@@ -259,6 +251,6 @@ export default function Timeline() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

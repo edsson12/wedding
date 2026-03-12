@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export default function Hero() {
+  const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -27,8 +29,8 @@ export default function Hero() {
         <div
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('/images/hero-bg.jpg'), linear-gradient(135deg, #3d1a27 0%, #6b3a4a 35%, #a05c72 65%, #c4849a 85%, #d4af7a 100%)`,
-            backgroundColor: "#5a2d42",
+            backgroundImage: `url('/images/hero-bg.jpg'), linear-gradient(135deg, #3A2030 0%, #6B4F57 35%, #9B6B7E 65%, #C98FA0 85%, #8FAE9C 100%)`,
+            backgroundColor: "#6B4F57",
           }}
         />
         {/* Warm overlay */}
@@ -47,7 +49,7 @@ export default function Hero() {
           transition={{ duration: 1.2, delay: 0.3 }}
           className="text-xs sm:text-sm uppercase tracking-[0.4em] text-white/80 mb-6 font-lato font-light"
         >
-          Save the Date
+          {t("hero.label")}
         </motion.p>
 
         {/* Names */}
@@ -60,7 +62,7 @@ export default function Hero() {
           <h1 className="font-script text-[4.5rem] sm:text-[7rem] md:text-[9rem] leading-none font-light italic text-white drop-shadow-lg">
             Vale
           </h1>
-          <p className="font-script text-3xl sm:text-4xl md:text-5xl text-white/80 italic font-light my-1">
+          <p className="text-3xl sm:text-4xl md:text-5xl text-white/60 my-1">
             &amp;
           </p>
           <h1 className="font-script text-[4.5rem] sm:text-[7rem] md:text-[9rem] leading-none font-light italic text-white drop-shadow-lg">
@@ -128,14 +130,14 @@ export default function Hero() {
       {/* Decorative bottom wave */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
         <svg
-          viewBox="0 0 1440 60"
+          viewBox="0 0 1440 80"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-12 sm:h-16"
+          className="w-full h-16 sm:h-20"
           preserveAspectRatio="none"
         >
           <path
-            d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z"
-            fill="#FBF5EF"
+            d="M0,40 C240,80 480,10 720,45 C960,80 1200,10 1440,40 L1440,80 L0,80 Z"
+            fill="#FBF0EE"
           />
         </svg>
       </div>

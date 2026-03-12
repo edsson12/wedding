@@ -2,22 +2,31 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const navLinks = [
-  { href: "#countdown", label: "El gran día" },
-  { href: "#timeline", label: "Programa" },
-  { href: "#cuando-donde", label: "Lugar" },
-  { href: "#rsvp", label: "Confirmar asistencia" },
-];
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Navbar() {
+  const { t } = useTranslation();
+  const navLinks = [
+    { href: "#countdown", label: t("nav.bigDay") },
+    { href: "#timeline", label: t("nav.program") },
+    { href: "#cuando-donde", label: t("nav.venue") },
+    { href: "#regalo", label: t("nav.gift") },
+  ];
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    // The page scroll lives inside a fixed container div, not on window.
+    // Use IntersectionObserver on the hero section instead.
+    const hero = document.querySelector<HTMLElement>('section');
+    if (!hero) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setScrolled(!entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
   }, []);
 
   const handleLink = (href: string) => {
@@ -50,20 +59,21 @@ export default function Navbar() {
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <button
                 key={link.href}
                 onClick={() => handleLink(link.href)}
-                className={`font-lato text-xs tracking-widest uppercase transition-colors duration-200 ${
+                className={`cursor-pointer font-lato text-xs tracking-widest uppercase transition-colors duration-200 ${
                   scrolled
                     ? "text-gray-600 hover:text-[--color-wine]"
                     : "text-white/80 hover:text-white"
-                } ${link.href === "#rsvp" ? (scrolled ? "bg-[--color-wine] text-white px-4 py-2 rounded-full hover:bg-[--color-dusty-rose]" : "border border-white/60 px-4 py-2 rounded-full hover:bg-white/10") : ""}`}
+                }`}
               >
                 {link.label}
               </button>
             ))}
+            <LanguageSwitcher dark={scrolled} />
           </nav>
 
           {/* Mobile hamburger */}
@@ -92,6 +102,9 @@ export default function Navbar() {
             className="fixed top-[56px] left-0 right-0 z-40 bg-white/95 backdrop-blur-md shadow-lg border-b border-[--color-blush]/40 md:hidden"
           >
             <nav className="flex flex-col py-4">
+              <div className="flex justify-center gap-2 py-3 border-b border-[--color-blush]/30 mb-1">
+                <LanguageSwitcher dark />
+              </div>
               {navLinks.map((link, i) => (
                 <motion.button
                   key={link.href}
@@ -99,9 +112,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.06 }}
                   onClick={() => handleLink(link.href)}
-                  className={`px-8 py-4 text-left font-lato text-xs tracking-widest uppercase text-gray-700 hover:text-[--color-wine] hover:bg-[--color-cream] transition-colors duration-150 ${
-                    link.href === "#rsvp" ? "font-semibold text-[--color-wine]" : ""
-                  }`}
+                  className="cursor-pointer px-8 py-4 text-left font-lato text-xs tracking-widest uppercase text-gray-700 hover:text-[--color-wine] hover:bg-[--color-cream] transition-colors duration-150"
                 >
                   {link.label}
                 </motion.button>

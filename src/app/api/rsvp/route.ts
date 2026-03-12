@@ -29,7 +29,7 @@ export async function GET(request: Request) {
 // POST /api/rsvp — submit RSVP response
 export async function POST(request: Request) {
   const body = await request.json();
-  const { token, status, guestName, companions, song, message } = body;
+  const { token, status, guestName, companions, song, message, allergy, intolerance, specialDiet } = body;
 
   if (!token || !["accepted", "declined"].includes(status)) {
     return NextResponse.json({ error: "Datos inválidos" }, { status: 400 });
@@ -52,6 +52,9 @@ export async function POST(request: Request) {
   invitation.companions = typeof companions === "number" ? Math.max(0, companions) : 0;
   invitation.song = song?.trim() ?? undefined;
   invitation.message = message?.trim() ?? undefined;
+  invitation.allergy = allergy?.trim() ?? undefined;
+  invitation.intolerance = intolerance?.trim() ?? undefined;
+  invitation.specialDiet = specialDiet?.trim() ?? undefined;
   await invitation.save();
 
   // Send notification (non-blocking — don't fail RSVP if email fails)
@@ -62,6 +65,9 @@ export async function POST(request: Request) {
     companions: invitation.companions,
     song: invitation.song,
     message: invitation.message,
+    allergy: invitation.allergy,
+    intolerance: invitation.intolerance,
+    specialDiet: invitation.specialDiet,
   }).catch(console.error);
 
   return NextResponse.json({ ok: true, status: invitation.status });

@@ -10,6 +10,9 @@ export interface IInvitation extends Document {
   companions: number;
   song?: string;
   message?: string;
+  allergy?: string;
+  intolerance?: string;
+  specialDiet?: string;
 }
 
 const InvitationSchema = new Schema<IInvitation>(
@@ -23,6 +26,9 @@ const InvitationSchema = new Schema<IInvitation>(
     companions: { type: Number, default: 0, min: 0 },
     song: { type: String, trim: true },
     message: { type: String, trim: true },
+    allergy: { type: String, trim: true },
+    intolerance: { type: String, trim: true },
+    specialDiet: { type: String, trim: true },
   },
   { timestamps: true }
 );

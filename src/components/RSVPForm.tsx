@@ -3,6 +3,7 @@
 import { useState, useRef, FormEvent } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import { useTranslation } from "react-i18next";
 
 // EmailJS config — add these to .env.local:
 // NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
@@ -18,7 +19,6 @@ const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "";
 interface FormState {
   name: string;
   email: string;
-  companions: string;
   song: string;
   message: string;
   attending: "yes" | "no" | "";
@@ -27,7 +27,6 @@ interface FormState {
 const initialState: FormState = {
   name: "",
   email: "",
-  companions: "0",
   song: "",
   message: "",
   attending: "",
@@ -36,6 +35,7 @@ const initialState: FormState = {
 type Status = "idle" | "loading" | "success" | "error";
 
 export default function RSVPForm() {
+  const { t } = useTranslation();
   const [form, setForm] = useState<FormState>(initialState);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -52,7 +52,7 @@ export default function RSVPForm() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (!form.attending) {
-      setErrorMsg("Por favor indica si asistirás a la boda.");
+      setErrorMsg(t("rsvp.errorAttending"));
       return;
     }
     setStatus("loading");
@@ -62,7 +62,6 @@ export default function RSVPForm() {
       guest_name: form.name,
       guest_email: form.email,
       attending: form.attending === "yes" ? "Sí, asistiré 🥂" : "No podré asistir",
-      companions: form.companions,
       song: form.song || "—",
       message: form.message || "—",
     };
@@ -85,8 +84,8 @@ export default function RSVPForm() {
       setStatus("error");
       setErrorMsg(
         isConfig
-          ? "⚠️ El formulario aún no está conectado al servicio de email. Configura las variables de EmailJS en .env.local."
-          : "Hubo un error al enviar el formulario. Por favor inténtalo de nuevo."
+          ? t("rsvp.errorGeneral")
+          : t("rsvp.errorGeneral")
       );
     }
   }
@@ -109,7 +108,7 @@ export default function RSVPForm() {
             transition={{ duration: 0.6 }}
             className="font-script italic text-2xl sm:text-3xl text-[--color-dusty-rose] mb-2"
           >
-            ¿Vienes con nosotros?
+            {t("rsvp.subtitle")}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
@@ -117,7 +116,7 @@ export default function RSVPForm() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-script text-4xl sm:text-5xl md:text-6xl text-[--color-wine] font-semibold"
           >
-            Confirma tu asistencia
+            {t("rsvp.title")}
           </motion.h2>
           <motion.div
             initial={{ scaleX: 0 }}
@@ -131,7 +130,7 @@ export default function RSVPForm() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mt-4 font-lato text-sm text-gray-500"
           >
-            Por favor confirma antes del <strong>30 de junio de 2026</strong>
+            {t("rsvp.deadlinePre")} <strong>{t("rsvp.deadlineDate")}</strong>
           </motion.p>
         </div>
 
@@ -150,17 +149,17 @@ export default function RSVPForm() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="font-script text-4xl text-[--color-wine] mb-3">¡Muchas gracias!</h3>
+              <h3 className="font-script text-4xl text-[--color-wine] mb-3">{t("rsvp.successTitle")}</h3>
               <p className="font-lato text-gray-600 leading-relaxed">
-                Hemos recibido tu confirmación. Te hemos enviado un correo con todos los detalles.
+                {t("rsvp.successText")}
                 <br />
-                <span className="font-semibold text-[--color-dusty-rose]">¡Te esperamos en la boda! 🤍</span>
+                <span className="font-semibold text-[--color-dusty-rose]">{t("rsvp.successSub")}</span>
               </p>
               <button
                 onClick={() => setStatus("idle")}
                 className="mt-8 font-lato text-sm text-[--color-dusty-rose] underline underline-offset-4"
               >
-                Enviar otra respuesta
+                {t("rsvp.sendAnother")}
               </button>
             </motion.div>
           ) : (
@@ -176,12 +175,12 @@ export default function RSVPForm() {
               {/* Attendance toggle */}
               <div>
                 <p className="font-lato text-sm font-semibold text-gray-700 mb-3">
-                  ¿Asistirás a nuestra boda? <span className="text-[--color-wine]">*</span>
+                  {t("rsvp.attending")} <span className="text-[--color-wine]">*</span>
                 </p>
                 <div className="grid grid-cols-2 gap-3">
                   {[
-                    { value: "yes", label: "¡Sí, allí estaré! 🥂", emoji: "🥂" },
-                    { value: "no", label: "No podré asistir", emoji: "😢" },
+                    { value: "yes", label: t("rsvp.yes") },
+                    { value: "no", label: t("rsvp.no") },
                   ].map((opt) => (
                     <button
                       key={opt.value}
@@ -217,7 +216,7 @@ export default function RSVPForm() {
               {/* Name */}
               <div>
                 <label className="block font-lato text-sm font-semibold text-gray-700 mb-1.5" htmlFor="name">
-                  Nombre completo <span className="text-[--color-wine]">*</span>
+                  {t("rsvp.name")} <span className="text-[--color-wine]">*</span>
                 </label>
                 <input
                   id="name"
@@ -226,7 +225,7 @@ export default function RSVPForm() {
                   required
                   value={form.name}
                   onChange={handleChange}
-                  placeholder="Tu nombre y apellidos"
+                  placeholder={t("rsvp.namePlaceholder")}
                   autoComplete="name"
                   className="w-full px-4 py-3 rounded-xl border border-[--color-blush] bg-[--color-cream] font-lato text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[--color-peach] focus:border-transparent transition-all duration-200"
                 />
@@ -235,7 +234,7 @@ export default function RSVPForm() {
               {/* Email */}
               <div>
                 <label className="block font-lato text-sm font-semibold text-gray-700 mb-1.5" htmlFor="email">
-                  Correo electrónico <span className="text-[--color-wine]">*</span>
+                  {t("rsvp.email")} <span className="text-[--color-wine]">*</span>
                 </label>
                 <input
                   id="email"
@@ -250,30 +249,10 @@ export default function RSVPForm() {
                 />
               </div>
 
-              {/* Companions */}
-              <div>
-                <label className="block font-lato text-sm font-semibold text-gray-700 mb-1.5" htmlFor="companions">
-                  ¿Cuántos acompañantes traes? (sin contarte a ti)
-                </label>
-                <select
-                  id="companions"
-                  name="companions"
-                  value={form.companions}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-[--color-blush] bg-[--color-cream] font-lato text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-[--color-peach] focus:border-transparent transition-all duration-200 appearance-none"
-                >
-                  {[0, 1, 2, 3, 4, 5].map((n) => (
-                    <option key={n} value={String(n)}>
-                      {n === 0 ? "Voy solo/a" : `${n} acompañante${n > 1 ? "s" : ""}`}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
               {/* Song */}
               <div>
                 <label className="block font-lato text-sm font-semibold text-gray-700 mb-1.5" htmlFor="song">
-                  🎵 Canción que no puede faltar en la fiesta
+                  {t("rsvp.songLabel")}
                 </label>
                 <input
                   id="song"
@@ -281,7 +260,7 @@ export default function RSVPForm() {
                   type="text"
                   value={form.song}
                   onChange={handleChange}
-                  placeholder="Artista — Canción"
+                  placeholder={t("rsvp.songPlaceholder")}
                   className="w-full px-4 py-3 rounded-xl border border-[--color-blush] bg-[--color-cream] font-lato text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[--color-peach] focus:border-transparent transition-all duration-200"
                 />
               </div>
@@ -289,7 +268,7 @@ export default function RSVPForm() {
               {/* Message */}
               <div>
                 <label className="block font-lato text-sm font-semibold text-gray-700 mb-1.5" htmlFor="message">
-                  💌 Mensaje para Vale &amp; Edu
+                  {t("rsvp.messageLabel")}
                 </label>
                 <textarea
                   id="message"
@@ -297,7 +276,7 @@ export default function RSVPForm() {
                   rows={4}
                   value={form.message}
                   onChange={handleChange}
-                  placeholder="Cuéntanos algo bonito... o una petición especial 🤍"
+                  placeholder={t("rsvp.messagePlaceholder")}
                   className="w-full px-4 py-3 rounded-xl border border-[--color-blush] bg-[--color-cream] font-lato text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[--color-peach] focus:border-transparent transition-all duration-200 resize-none"
                 />
               </div>
@@ -326,15 +305,15 @@ export default function RSVPForm() {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                     </svg>
-                    Enviando...
+                    {t("rsvp.submitting")}
                   </span>
                 ) : (
-                  "Confirmar asistencia"
+                  t("rsvp.submit")
                 )}
               </button>
 
               <p className="text-center font-lato text-xs text-gray-400">
-                Recibirás un correo de confirmación con los detalles de la boda 🌸
+                {t("rsvp.successText")}
               </p>
             </motion.form>
           )}

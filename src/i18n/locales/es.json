@@ -1,0 +1,164 @@
+{
+  "nav": {
+    "bigDay": "El gran día",
+    "program": "Programa",
+    "venue": "Lugar",
+    "gift": "Regalo"
+  },
+  "hero": {
+    "label": "Nuestra boda",
+    "scroll": "Scroll"
+  },
+  "countdown": {
+    "soon": "Faltan solo...",
+    "days": "Días",
+    "hours": "Horas",
+    "minutes": "Minutos",
+    "seconds": "Segundos",
+    "title": "¡Para que nos acompañes!",
+    "date": "25 · Julio · 2026 · Zaragoza"
+  },
+  "timeline": {
+    "subtitle": "El gran día",
+    "title": "Programa de la boda",
+    "events": {
+      "ceremony": {
+        "title": "Ceremonia",
+        "description": "El momento más especial: nos damos el sí quiero rodeados de las personas que más queremos."
+      },
+      "cocktail": {
+        "title": "Cóctel",
+        "description": "Brindamos juntos al aire libre con copas, buenos bocados y mejores conversaciones."
+      },
+      "dinner": {
+        "title": "Cena",
+        "description": "Una cena pensada con cariño: el mejor menú para una noche que no olvidaremos."
+      },
+      "party": {
+        "title": "¡Fiesta toda la noche!",
+        "description": "Llega el momento de bailar, reír y disfrutar hasta que el cuerpo aguante. ¡A por ello!"
+      }
+    }
+  },
+  "whenWhere": {
+    "subtitle": "Os esperamos aquí",
+    "title": "Cuándo y Dónde",
+    "cards": [
+      {
+        "label": "Lugar de la fiesta",
+        "title": "Casalizio",
+        "body": "Restaurante · Arrocería · Eventos\nCam. la Raya, s/n\n50002 Zaragoza, España",
+        "sub": "25 de julio de 2026 · 16:00h",
+        "linkText": "Ver en Google Maps"
+      },
+      {
+        "label": "Alojamiento",
+        "title": "Zonas recomendadas",
+        "body": "Centro histórico de Zaragoza\nBarrio El Gancho · Zona Universidades",
+        "sub": "Hoteles, apartamentos y pensiones para todos los bolsillos",
+        "linkText": "Buscar alojamiento"
+      },
+      {
+        "label": "Cómo llegar",
+        "title": "Para llegar a Zaragoza",
+        "body": "AVE desde Madrid (~1h 20min)\nAVE desde Barcelona (~1h 30min)\nAeropuerto de Zaragoza (ZAZ)",
+        "sub": "Zaragoza es fácilmente accesible en tren, avión o coche",
+        "linkText": "Reservar tren en Renfe"
+      }
+    ],
+    "tipsTitle": "Qué hacer en Zaragoza",
+    "tips": [
+      "Visita la Basílica del Pilar, icono de la ciudad",
+      "Prueba el ternasco aragonés y las migas con chorizo",
+      "Pasea por el Parque Grande José Antonio Labordeta",
+      "De compras en la calle Alfonso I y el Coso",
+      "El casco histórico merece un paseo tranquilo"
+    ]
+  },
+  "gift": {
+    "title": "¿Nos queréis hacer un regalo?",
+    "p1": "Vuestra presencia ya es el mejor regalo que podemos imaginar. En serio. De verdad.",
+    "p1italic": "Absolutamente de verdad.",
+    "p2": "Pero si de todas formas insistís... quién somos nosotros para negaros esa alegría 😏",
+    "ibanLabel": "IBAN",
+    "holderLabel": "Titular",
+    "copy": "Copiar",
+    "copied": "✓ Copiado",
+    "footnote": "Y si el vino se acaba antes de medianoche, también aceptamos donaciones en especie. 🍷"
+  },
+  "cta": {
+    "title": "¿Ya tienes tu invitación?",
+    "p1": "Pronto recibirás un correo personalizado con tu enlace de confirmación.",
+    "p2": "Si ya lo recibiste, usa el enlace que está en ese correo para confirmar tu asistencia.",
+    "noEmail": "¿No recibiste el correo? Escríbenos a"
+  },
+  "footer": {
+    "quote": "\"El amor no mira con los ojos, sino con la mente.\"",
+    "made": "Hecho con 🤍 para nuestra boda"
+  },
+  "rsvp": {
+    "subtitle": "¿Vienes con nosotros?",
+    "title": "Confirma tu asistencia",
+    "deadlinePre": "Por favor confirma antes del",
+    "deadlineDate": "30 de junio de 2026",
+    "attending": "¿Asistirás a nuestra boda?",
+    "yes": "¡Sí, allí estaré! 🥂",
+    "no": "No podré asistir",
+    "name": "Nombre completo",
+    "namePlaceholder": "Tu nombre y apellidos",
+    "email": "Correo electrónico",
+    "songLabel": "🎵 Canción que no puede faltar en la fiesta",
+    "songPlaceholder": "Artista — Canción",
+    "messageLabel": "💌 Mensaje para Vale & Edu",
+    "messagePlaceholder": "Cuéntanos algo bonito... o una petición especial 🤍",
+    "errorAttending": "Por favor indica si asistirás a la boda.",
+    "submit": "Enviar confirmación",
+    "submitting": "Enviando...",
+    "successTitle": "¡Muchas gracias!",
+    "successText": "Hemos recibido tu confirmación. Te hemos enviado un correo con todos los detalles.",
+    "successSub": "¡Te esperamos en la boda! 🤍",
+    "sendAnother": "Enviar otra respuesta",
+    "errorGeneral": "Hubo un error al enviar el formulario. Por favor inténtalo de nuevo."
+  },
+  "confirmar": {
+    "loading": "Cargando tu invitación...",
+    "invalidLink": "Enlace no válido",
+    "alreadyAccepted": "¡Ya confirmaste tu asistencia!",
+    "alreadyDeclined": "Ya nos enviaste tu respuesta",
+    "waitingAccepted": "¡Te esperamos con mucha ilusión el 25 de julio de 2026! 💕",
+    "waitingDeclined": "Gracias por avisarnos. ¡Te tendremos presentes ese día!",
+    "thanksAccepted": "¡Gracias por confirmar!",
+    "thanksDeclined": "¡Gracias por avisarnos!",
+    "acceptedMessageBold": "¡Nos hace muchísima ilusión tenerte el 25 de julio de 2026 en Zaragoza!",
+    "acceptedMessageRest": "Ya solo queda esperar con ganas. Con todo nuestro amor, Vale & Edu 💍",
+    "declinedMessage": "Sentimos que no puedas estar con nosotros, pero te tendremos muy presentes ese día. Con todo nuestro cariño, Vale & Edu 💕",
+    "discoverTitle": "✨ ¿Quieres saber todo sobre el gran día?",
+    "discoverSub": "Programa, cuenta atrás, lugar y todos los detalles te esperan en nuestra web. ¡No te lo pierdas!",
+    "discoverCta": "Descubre nuestra boda →",
+    "greeting": "Hola{{email}}, nos hace mucha ilusión contar contigo.",
+    "name": "Tu nombre completo",
+    "namePlaceholder": "Nombre y apellidos",
+    "attending": "¿Asistirás a la boda?",
+    "attendYes": "✅ Sí, asistiré",
+    "attendNo": "❌ No podré ir",
+    "dietary": "Restricciones alimentarias",
+    "dietaryOptional": "(opcional)",
+    "allergies": "Alergias",
+    "allergiesPlaceholder": "Pescado, frutos secos, marisco...",
+    "intolerances": "Intolerancias",
+    "intolerancesPlaceholder": "Lactosa, gluten, fructosa...",
+    "specialDiet": "Dieta especial",
+    "specialDietPlaceholder": "Vegetariana, vegana, halal...",
+    "song": "¿Qué canción no puede faltar? 🎵",
+    "songOptional": "(opcional)",
+    "songPlaceholder": "Artista — Canción",
+    "message": "Mensaje para los novios 💕",
+    "messageOptional": "(opcional)",
+    "messagePlaceholder": "Escribe algo bonito para Vale y Edu...",
+    "send": "Enviar respuesta →",
+    "sending": "Enviando...",
+    "errorAttending": "Por favor indica si asistirás o no",
+    "errorName": "Por favor escribe tu nombre",
+    "errorConnection": "Error de conexión"
+  }
+}
