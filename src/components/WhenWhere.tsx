@@ -152,19 +152,26 @@ export default function WhenWhere() {
 
         {/* Location Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
-          {locationCards.map((card, i) => (
+          {locationCards.map((card, i) => {
+            const CARD_COLORS = ["#9B6B7E", "#8FAE9C", "#C98FA0"];
+            const color = CARD_COLORS[i];
+            return (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.1 + i * 0.15 }}
               onClick={() => setModalCard(i)}
-              className="bg-[--color-cream] rounded-2xl p-6 sm:p-7 border border-[--color-blush]/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col gap-3 cursor-pointer group"
+              className="bg-white rounded-2xl p-6 sm:p-7 flex flex-col gap-3 cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+              style={{ border: `1.5px solid ${color}55`, boxShadow: `0 2px 12px ${color}15` }}
             >
-              <div className="w-12 h-12 rounded-full bg-[--color-peach]/30 flex items-center justify-center text-[--color-wine] group-hover:bg-[--color-peach]/50 transition-colors">
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center"
+                style={{ background: `${color}18`, border: `1.5px solid ${color}40`, color }}
+              >
                 {card.icon}
               </div>
-              <p className="font-lato text-xs uppercase tracking-[0.2em] text-[--color-dusty-rose]">
+              <p className="font-lato text-xs uppercase tracking-[0.2em]" style={{ color }}>
                 {card.label}
               </p>
               <h3 className="font-cormorant text-xl sm:text-2xl font-semibold text-[--color-foreground]">
@@ -176,7 +183,7 @@ export default function WhenWhere() {
               <p className="font-lato text-xs text-gray-400 italic">
                 {card.sub}
               </p>
-              <div className="mt-auto inline-flex items-center gap-1.5 text-[--color-wine] font-lato text-sm font-semibold group-hover:text-[--color-dusty-rose] transition-colors duration-200">
+              <div className="mt-auto inline-flex items-center gap-1.5 font-lato text-sm font-semibold transition-colors duration-200" style={{ color }}>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -184,32 +191,47 @@ export default function WhenWhere() {
                 {card.linkText}
               </div>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Tips Zaragoza */}
-        <div ref={tipsRef} className="text-center">
+        <div ref={tipsRef}>
           <motion.h3
             initial={{ opacity: 0, y: 15 }}
             animate={tipsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="font-script text-3xl sm:text-4xl text-[--color-wine] mb-6"
+            className="font-script text-3xl sm:text-4xl text-[--color-wine] mb-8 text-center"
           >
             {t("whenWhere.tipsTitle")}
           </motion.h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {curiosidades.map((tip, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={tipsInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-[--color-cream] rounded-full px-5 py-2.5 border border-[--color-blush] flex items-center gap-2 text-sm font-lato text-gray-600 hover:bg-[--color-blush]/30 transition-colors duration-200"
-              >
-                <span className="text-lg">{tip.icon}</span>
-                {tip.text}
-              </motion.div>
-            ))}
+          <div className="flex flex-wrap justify-center gap-4">
+            {curiosidades.map((tip, i) => {
+              const TIP_COLORS = ["#8FAE9C", "#9B6B7E", "#8FAE9C", "#C98FA0", "#9B6B7E"];
+              const color = TIP_COLORS[i];
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={tipsInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.55, delay: 0.1 + i * 0.1 }}
+                  className="bg-white rounded-2xl p-5 flex items-center gap-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+                  style={{
+                    border: `1.5px solid ${color}55`,
+                    boxShadow: `0 2px 12px ${color}18`,
+                    width: "clamp(220px, 30%, 340px)",
+                  }}
+                >
+                  <div
+                    className="shrink-0 w-11 h-11 rounded-xl flex items-center justify-center text-xl"
+                    style={{ background: `${color}22`, border: `1.5px solid ${color}44` }}
+                  >
+                    {tip.icon}
+                  </div>
+                  <p className="font-lato text-sm leading-relaxed" style={{ color: "#6B4F57" }}>{tip.text}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>

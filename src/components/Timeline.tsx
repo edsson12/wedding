@@ -10,15 +10,16 @@ interface EventCard {
   emoji: string;
   accent: string;
   bg: string;
+  gradient: string;
   eventKey: string;
   title: string;
   description: string;
 }
 
 const EVENT_META = [
-  { time: "20:00 h", emoji: "🥂", accent: "#C98FA0", bg: "from-[#C98FA0] to-[#d9a8b8]", eventKey: "cocktail" },
-  { time: "21:00 h", emoji: "🍽️", accent: "#D4A0AE", bg: "from-[#D4A0AE] to-[#e4b8c4]", eventKey: "dinner" },
-  { time: "23:00 h", emoji: "🎉", accent: "#B07888", bg: "from-[#B07888] to-[#c4909c]", eventKey: "party" },
+  { time: "20:00 h", emoji: "🥂", accent: "#C98FA0", bg: "from-[#C98FA0] to-[#d9a8b8]", gradient: "linear-gradient(135deg, #C98FA0 0%, #ddb0c0 100%)", eventKey: "cocktail" },
+  { time: "21:00 h", emoji: "🍽️", accent: "#D4A0AE", bg: "from-[#D4A0AE] to-[#e4b8c4]", gradient: "linear-gradient(135deg, #D4A0AE 0%, #e8c2ce 100%)", eventKey: "dinner" },
+  { time: "23:00 h", emoji: "🎉", accent: "#B07888", bg: "from-[#B07888] to-[#c4909c]", gradient: "linear-gradient(135deg, #B07888 0%, #c99daa 100%)", eventKey: "party" },
 ];
 
 function DesktopCard({
@@ -37,18 +38,15 @@ function DesktopCard({
       initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.7, delay: index * 0.15 }}
-      className="group relative bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-400"
-      style={{ border: `1px solid ${event.accent}30` }}
+      className="bg-white rounded-3xl hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+      style={{ border: `1.5px solid ${event.accent}55`, boxShadow: `0 2px 14px ${event.accent}18` }}
     >
-      {/* Top gradient bar */}
-      <div className={`h-1.5 w-full bg-gradient-to-r ${event.bg}`} />
-
       <div className={`p-6 sm:p-7 ${isLeft ? "text-right" : "text-left"}`}>
         {/* Time badge */}
         <div className={`flex ${isLeft ? "justify-end" : "justify-start"} mb-4`}>
           <span
-            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-white font-lato text-xs font-bold tracking-widest uppercase shadow-sm"
-            style={{ background: `linear-gradient(135deg, ${event.accent}, ${event.accent}cc)` }}
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full font-lato text-xs font-bold tracking-widest uppercase border"
+            style={{ color: event.accent, borderColor: `${event.accent}55`, background: `${event.accent}12` }}
           >
             <span>{event.emoji}</span>
             {event.time}
@@ -65,10 +63,6 @@ function DesktopCard({
           {event.description}
         </p>
       </div>
-
-      {/* Hover shimmer */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-3xl"
-        style={{ background: `radial-gradient(circle at ${isLeft ? "80%" : "20%"} 50%, ${event.accent}08, transparent 70%)` }} />
     </motion.div>
   );
 }
@@ -98,7 +92,7 @@ function TimelineItem({
       </div>
 
       {/* Center: dot + line */}
-      <div className="flex flex-col items-center flex-shrink-0">
+      <div className="flex flex-col items-center shrink-0">
         <motion.div
           initial={{ scale: 0 }}
           animate={inView ? { scale: 1 } : {}}
@@ -146,7 +140,7 @@ function MobileTimelineItem({
   return (
     <div ref={ref} className="flex gap-4">
       {/* Left: dot + line */}
-      <div className="flex flex-col items-center flex-shrink-0">
+      <div className="flex flex-col items-center shrink-0">
         <motion.div
           initial={{ scale: 0 }}
           animate={inView ? { scale: 1 } : {}}
@@ -169,16 +163,14 @@ function MobileTimelineItem({
         initial={{ opacity: 0, x: 30 }}
         animate={inView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.6, delay: index * 0.1 + 0.1 }}
-        className={`bg-white rounded-2xl overflow-hidden shadow-md flex-1 ${!isLast ? "mb-5" : ""}`}
-        style={{ border: `1px solid ${event.accent}30` }}
+        className={`bg-white rounded-2xl flex-1 ${!isLast ? "mb-5" : ""}`}
+        style={{ border: `1.5px solid ${event.accent}55`, boxShadow: `0 2px 12px ${event.accent}18` }}
       >
-        {/* Top bar */}
-        <div className={`h-1 w-full bg-gradient-to-r ${event.bg}`} />
         <div className="p-4">
           {/* Time badge */}
           <span
-            className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-white font-lato text-[10px] font-bold tracking-wider uppercase mb-2 shadow-sm"
-            style={{ background: `linear-gradient(135deg, ${event.accent}, ${event.accent}cc)` }}
+            className="inline-flex items-center gap-1 px-3 py-1 rounded-full font-lato text-[10px] font-bold tracking-wider uppercase mb-3 border"
+            style={{ color: event.accent, borderColor: `${event.accent}55`, background: `${event.accent}12` }}
           >
             {event.time}
           </span>
@@ -206,7 +198,7 @@ export default function Timeline() {
     <motion.section id="timeline" className="relative min-h-full py-20 sm:py-28 bg-[#FBF0EE]" style={{ minHeight: '100vh' }}
       initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.05 }} transition={{ duration: 0.8 }}>
       <ScrollBouquets delay={0.2} set={1} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-20 blur-3xl pointer-events-none"
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 rounded-full opacity-20 blur-3xl pointer-events-none"
         style={{ background: "radial-gradient(circle, #F5D5DA, transparent)" }} />
 
       <div className="max-w-5xl mx-auto px-6">
