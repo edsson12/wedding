@@ -54,7 +54,7 @@
       {
         "label": "Alojamiento",
         "title": "Zonas recomendadas",
-        "body": "Centro histórico de Zaragoza\nZona Plaza de Ropa · Zona Universidades",
+        "body": "Centro histórico de Zaragoza\nZona Plaza de Roma · Zona Universidades",
         "sub": "Hoteles, apartamentos y pensiones para todos los bolsillos",
         "linkText": "Buscar alojamiento"
       },
@@ -93,8 +93,8 @@
     "noEmail": "Contáctanos en"
   },
   "footer": {
-    "quote": "\"El amor no mira con los ojos, sino con la mente.\"",
-    "made": "Hecho con 🤍 para nuestra boda"
+    "quote": "\"Contigo aprendí que el amor también puede ser tranquilo.\"",
+    "made": "Hecho con 🤍 por TrinitySoft para Valeria y Eduardo"
   },
   "rsvp": {
     "subtitle": "¿Vienes con nosotros?",
@@ -144,10 +144,13 @@
     "dietary": "Restricciones alimentarias",
     "dietaryOptional": "(opcional)",
     "allergies": "Alergias",
+    "allergiesCheck": "Tengo alguna alergia",
     "allergiesPlaceholder": "Pescado, frutos secos, marisco...",
     "intolerances": "Intolerancias",
+    "intolerancesCheck": "Tengo alguna intolerancia",
     "intolerancesPlaceholder": "Lactosa, gluten, fructosa...",
     "specialDiet": "Dieta especial",
+    "specialDietCheck": "Sigo una dieta especial",
     "specialDietPlaceholder": "Vegetariana, vegana, halal...",
     "song": "¿Qué canción no puede faltar? 🎵",
     "songOptional": "(opcional)",

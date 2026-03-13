@@ -30,6 +30,9 @@ function ConfirmarContent() {
   const [allergy, setAllergy] = useState("");
   const [intolerance, setIntolerance] = useState("");
   const [specialDiet, setSpecialDiet] = useState("");
+  const [hasAllergy, setHasAllergy] = useState(false);
+  const [hasIntolerance, setHasIntolerance] = useState(false);
+  const [hasSpecialDiet, setHasSpecialDiet] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
 
@@ -290,68 +293,92 @@ function ConfirmarContent() {
               {t("confirmar.dietaryOptional")}
             </span>
           </p>
-          <div style={{ marginBottom: "12px" }}>
-            <label
-              style={{
-                ...labelStyle,
-                fontSize: "11px",
-                marginBottom: "6px",
-                opacity: 0.75,
-              }}
-            >
-              {t("confirmar.allergies")}
+
+          {/* Allergy */}
+          <div style={{ marginBottom: "14px" }}>
+            <label style={{ display: "flex", alignItems: "center", gap: "10px", cursor: "pointer" }}>
+              <input
+                type="checkbox"
+                checked={hasAllergy}
+                onChange={(e) => {
+                  setHasAllergy(e.target.checked);
+                  if (!e.target.checked) setAllergy("");
+                }}
+                style={{ accentColor: "#9B6B7E", width: "18px", height: "18px", cursor: "pointer", flexShrink: 0 }}
+              />
+              <span style={{ color: "#6B4F57", fontSize: "14px" }}>
+                {t("confirmar.allergiesCheck")}
+              </span>
             </label>
-            <input
-              type="text"
-              value={allergy}
-              onChange={(e) => setAllergy(e.target.value)}
-              placeholder={t("confirmar.allergiesPlaceholder")}
-              style={inputStyle}
-              onFocus={(e) => (e.target.style.borderColor = "#9B6B7E")}
-              onBlur={(e) => (e.target.style.borderColor = "#EAB5BC")}
-            />
+            {hasAllergy && (
+              <input
+                type="text"
+                value={allergy}
+                onChange={(e) => setAllergy(e.target.value)}
+                placeholder={t("confirmar.allergiesPlaceholder")}
+                style={{ ...inputStyle, marginTop: "10px" }}
+                onFocus={(e) => (e.target.style.borderColor = "#9B6B7E")}
+                onBlur={(e) => (e.target.style.borderColor = "#EAB5BC")}
+              />
+            )}
           </div>
-          <div style={{ marginBottom: "12px" }}>
-            <label
-              style={{
-                ...labelStyle,
-                fontSize: "11px",
-                marginBottom: "6px",
-                opacity: 0.75,
-              }}
-            >
-              {t("confirmar.intolerances")}
+
+          {/* Intolerance */}
+          <div style={{ marginBottom: "14px" }}>
+            <label style={{ display: "flex", alignItems: "center", gap: "10px", cursor: "pointer" }}>
+              <input
+                type="checkbox"
+                checked={hasIntolerance}
+                onChange={(e) => {
+                  setHasIntolerance(e.target.checked);
+                  if (!e.target.checked) setIntolerance("");
+                }}
+                style={{ accentColor: "#9B6B7E", width: "18px", height: "18px", cursor: "pointer", flexShrink: 0 }}
+              />
+              <span style={{ color: "#6B4F57", fontSize: "14px" }}>
+                {t("confirmar.intolerancesCheck")}
+              </span>
             </label>
-            <input
-              type="text"
-              value={intolerance}
-              onChange={(e) => setIntolerance(e.target.value)}
-              placeholder={t("confirmar.intolerancesPlaceholder")}
-              style={inputStyle}
-              onFocus={(e) => (e.target.style.borderColor = "#9B6B7E")}
-              onBlur={(e) => (e.target.style.borderColor = "#EAB5BC")}
-            />
+            {hasIntolerance && (
+              <input
+                type="text"
+                value={intolerance}
+                onChange={(e) => setIntolerance(e.target.value)}
+                placeholder={t("confirmar.intolerancesPlaceholder")}
+                style={{ ...inputStyle, marginTop: "10px" }}
+                onFocus={(e) => (e.target.style.borderColor = "#9B6B7E")}
+                onBlur={(e) => (e.target.style.borderColor = "#EAB5BC")}
+              />
+            )}
           </div>
+
+          {/* Special diet */}
           <div>
-            <label
-              style={{
-                ...labelStyle,
-                fontSize: "11px",
-                marginBottom: "6px",
-                opacity: 0.75,
-              }}
-            >
-              {t("confirmar.specialDiet")}
+            <label style={{ display: "flex", alignItems: "center", gap: "10px", cursor: "pointer" }}>
+              <input
+                type="checkbox"
+                checked={hasSpecialDiet}
+                onChange={(e) => {
+                  setHasSpecialDiet(e.target.checked);
+                  if (!e.target.checked) setSpecialDiet("");
+                }}
+                style={{ accentColor: "#9B6B7E", width: "18px", height: "18px", cursor: "pointer", flexShrink: 0 }}
+              />
+              <span style={{ color: "#6B4F57", fontSize: "14px" }}>
+                {t("confirmar.specialDietCheck")}
+              </span>
             </label>
-            <input
-              type="text"
-              value={specialDiet}
-              onChange={(e) => setSpecialDiet(e.target.value)}
-              placeholder={t("confirmar.specialDietPlaceholder")}
-              style={inputStyle}
-              onFocus={(e) => (e.target.style.borderColor = "#9B6B7E")}
-              onBlur={(e) => (e.target.style.borderColor = "#EAB5BC")}
-            />
+            {hasSpecialDiet && (
+              <input
+                type="text"
+                value={specialDiet}
+                onChange={(e) => setSpecialDiet(e.target.value)}
+                placeholder={t("confirmar.specialDietPlaceholder")}
+                style={{ ...inputStyle, marginTop: "10px" }}
+                onFocus={(e) => (e.target.style.borderColor = "#9B6B7E")}
+                onBlur={(e) => (e.target.style.borderColor = "#EAB5BC")}
+              />
+            )}
           </div>
         </div>
 

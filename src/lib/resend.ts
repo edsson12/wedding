@@ -38,7 +38,7 @@ export async function sendInvitationEmail(email: string, token: string): Promise
             <p style="display:inline-block;background:#EAB5BC;color:#fff;font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin:0 0 18px;font-family:Helvetica,Arial,sans-serif;">🇪🇸 Español</p>
             <p style="color:#9B6B7E;font-size:22px;font-weight:400;font-style:italic;margin:0 0 14px;">Querido/a invitado/a,</p>
             <p style="color:#6B4F57;font-size:15px;line-height:1.9;margin:0 0 10px;font-family:Helvetica,Arial,sans-serif;">Sería un honor tenerte con nosotros en el día más especial de nuestras vidas. Tu presencia llenará de alegría nuestra celebración.</p>
-            <p style="color:#C98FA0;font-size:14px;line-height:1.8;margin:0;font-family:Helvetica,Arial,sans-serif;">Por favor, confirma tu asistencia usando el enlace de abajo. También podrás dejarnos la canción que no puede faltar y un mensaje especial 🌿</p>
+            <p style="color:#C98FA0;font-size:14px;line-height:1.8;margin:0;font-family:Helvetica,Arial,sans-serif;">Completa el siguiente formulario para descubrir todos los detalles de la boda. Allí también podrás dejarnos la canción que te gustaría escuchar y un mensaje para nosotros🌿</p>
           </td>
         </tr>
 
@@ -51,7 +51,7 @@ export async function sendInvitationEmail(email: string, token: string): Promise
             <p style="display:inline-block;background:#EAB5BC;color:#fff;font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin:0 0 18px;font-family:Helvetica,Arial,sans-serif;">🇬🇧 English</p>
             <p style="color:#9B6B7E;font-size:22px;font-weight:400;font-style:italic;margin:0 0 14px;">Dear guest,</p>
             <p style="color:#6B4F57;font-size:15px;line-height:1.9;margin:0 0 10px;font-family:Helvetica,Arial,sans-serif;">It would be an honour to have you with us on the most special day of our lives. Your presence will make our celebration truly complete.</p>
-            <p style="color:#C98FA0;font-size:14px;line-height:1.8;margin:0;font-family:Helvetica,Arial,sans-serif;">Please confirm your attendance using the link below. You can also let us know the song that must be played and leave us a special message 🌿</p>
+            <p style="color:#C98FA0;font-size:14px;line-height:1.8;margin:0;font-family:Helvetica,Arial,sans-serif;">Fill in the form below to discover all the details of the wedding. You can also let us know the song you’d like to hear and leave us a message🌿</p>
           </td>
         </tr>
 
@@ -64,7 +64,7 @@ export async function sendInvitationEmail(email: string, token: string): Promise
             <p style="display:inline-block;background:#EAB5BC;color:#fff;font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin:0 0 18px;font-family:Helvetica,Arial,sans-serif;">🇫🇷 Français</p>
             <p style="color:#9B6B7E;font-size:22px;font-weight:400;font-style:italic;margin:0 0 14px;">Cher/chère invité·e,</p>
             <p style="color:#6B4F57;font-size:15px;line-height:1.9;margin:0 0 10px;font-family:Helvetica,Arial,sans-serif;">Ce serait un honneur de vous avoir avec nous pour le jour le plus spécial de notre vie. Votre présence rendra notre célébration inoubliable.</p>
-            <p style="color:#C98FA0;font-size:14px;line-height:1.8;margin:0;font-family:Helvetica,Arial,sans-serif;">Veuillez confirmer votre présence en utilisant le lien ci-dessous. Vous pouvez aussi nous indiquer la chanson indispensable et nous laisser un message 🌿</p>
+            <p style="color:#C98FA0;font-size:14px;line-height:1.8;margin:0;font-family:Helvetica,Arial,sans-serif;">Remplissez le formulaire ci-dessous pour découvrir tous les détails du mariage. Vous pourrez aussi nous indiquer la chanson que vous aimeriez entendre et nous laisser un message🌿</p>
           </td>
         </tr>
 
@@ -72,7 +72,7 @@ export async function sendInvitationEmail(email: string, token: string): Promise
         <tr>
           <td style="padding:8px 48px 36px;text-align:center;background:#fff;">
             <a href="${confirmUrl}" style="display:inline-block;background:linear-gradient(135deg,#9B6B7E,#C98FA0);color:#fff;text-decoration:none;padding:18px 48px;border-radius:50px;font-size:14px;letter-spacing:2px;font-family:Helvetica,Arial,sans-serif;font-weight:600;box-shadow:0 6px 20px rgba(155,107,126,0.4);">
-              Confirmar · Confirm · Confirmer →
+              Ver detalles · See details · Voir les détails →
             </a>
             <p style="color:#bbb;font-size:11px;margin:24px 0 0;line-height:1.7;font-family:Helvetica,Arial,sans-serif;">
               <a href="${confirmUrl}" style="color:#C98FA0;word-break:break-all;text-decoration:none;">${confirmUrl}</a>

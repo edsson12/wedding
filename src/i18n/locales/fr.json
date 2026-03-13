@@ -54,7 +54,7 @@
       {
         "label": "Hébergement",
         "title": "Zones recommandées",
-        "body": "Centre historique de Saragosse\nZone Plaza de Ropa · Zone universitaire",
+        "body": "Centre historique de Saragosse\nZone Plaza de Roma · Zone universitaire",
         "sub": "Hôtels, appartements et pensions pour tous les budgets",
         "linkText": "Trouver un hébergement"
       },
@@ -93,8 +93,8 @@
     "noEmail": "Contactez-nous à"
   },
   "footer": {
-    "quote": "\"L'amour ne voit pas avec les yeux, mais avec l'esprit.\"",
-    "made": "Fait avec 🤍 pour notre mariage"
+    "quote": "\"Avec toi, j'ai appris que l'amour peut aussi être paisible.\"",
+    "made": "Conçu avec amour 🤍 par trinitysoft pour Valeria et Eduardo"
   },
   "rsvp": {
     "subtitle": "Vous venez avec nous ?",
@@ -144,10 +144,13 @@
     "dietary": "Restrictions alimentaires",
     "dietaryOptional": "(facultatif)",
     "allergies": "Allergies",
+    "allergiesCheck": "J'ai des allergies",
     "allergiesPlaceholder": "Poisson, noix, fruits de mer...",
     "intolerances": "Intolérances",
+    "intolerancesCheck": "J'ai une intolérance",
     "intolerancesPlaceholder": "Lactose, gluten, fructose...",
     "specialDiet": "Régime spécial",
+    "specialDietCheck": "Je suis un régime spécial",
     "specialDietPlaceholder": "Végétarien, végétalien, halal...",
     "song": "Quelle chanson est indispensable ? 🎵",
     "songOptional": "(facultatif)",

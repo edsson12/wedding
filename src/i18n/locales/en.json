@@ -54,7 +54,7 @@
       {
         "label": "Accommodation",
         "title": "Recommended areas",
-        "body": "Historic centre of Zaragoza\nPlaza de Ropa area · University area",
+        "body": "Historic centre of Zaragoza\nPlaza de Roma area · University area",
         "sub": "Hotels, apartments and guesthouses for every budget",
         "linkText": "Find accommodation"
       },
@@ -93,8 +93,8 @@
     "noEmail": "Contact us at"
   },
   "footer": {
-    "quote": "\"Love looks not with the eyes, but with the mind.\"",
-    "made": "Made with 🤍 for our wedding"
+    "quote": "\"With you I learned that love can also be peaceful.\"",
+    "made": "Made with 🤍 by TrinitySoft for Valeria and Eduardo"
   },
   "rsvp": {
     "subtitle": "Joining us?",
@@ -144,10 +144,13 @@
     "dietary": "Dietary requirements",
     "dietaryOptional": "(optional)",
     "allergies": "Allergies",
+    "allergiesCheck": "I have allergies",
     "allergiesPlaceholder": "Fish, nuts, shellfish...",
     "intolerances": "Intolerances",
+    "intolerancesCheck": "I have an intolerance",
     "intolerancesPlaceholder": "Lactose, gluten, fructose...",
     "specialDiet": "Special diet",
+    "specialDietCheck": "I follow a special diet",
     "specialDietPlaceholder": "Vegetarian, vegan, halal...",
     "song": "What song can't be missing? 🎵",
     "songOptional": "(optional)",
