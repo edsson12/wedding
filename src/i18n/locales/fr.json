@@ -87,10 +87,10 @@
     "footnote": "Et si le vin vient à manquer avant minuit, nous acceptons aussi les donations en nature. 🍷"
   },
   "cta": {
-    "title": "Vous avez reçu votre invitation ?",
-    "p1": "Vous recevrez bientôt un e-mail personnalisé avec votre lien de confirmation.",
-    "p2": "Si vous l'avez déjà reçu, utilisez le lien dans cet e-mail pour confirmer votre présence.",
-    "noEmail": "Vous n'avez pas reçu l'e-mail ? Écrivez-nous à"
+    "title": "Vous n'avez pas reçu votre invitation ?",
+    "p1": "Toutes les invitations personnalisées avec le lien de confirmation ont déjà été envoyées.",
+    "p2": "Si votre e-mail n'est pas arrivé pour une raison quelconque, contactez-nous et nous vous le renvoyons avec plaisir.",
+    "noEmail": "Contactez-nous à"
   },
   "footer": {
     "quote": "\"L'amour ne voit pas avec les yeux, mais avec l'esprit.\"",
@@ -135,7 +135,7 @@
     "discoverTitle": "✨ Vous voulez tout savoir sur le grand jour ?",
     "discoverSub": "Le programme, le compte à rebours, le lieu et tous les détails vous attendent sur notre site. À ne pas manquer !",
     "discoverCta": "Découvrez notre mariage →",
-    "greeting": "Bonjour{{email}}, nous sommes tellement heureux de vous compter parmi nous.",
+    "greeting": "Bonjour, nous sommes tellement heureux de vous compter parmi nous.",
     "name": "Votre nom complet",
     "namePlaceholder": "Prénom et nom",
     "attending": "Serez-vous présent(e) au mariage ?",

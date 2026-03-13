@@ -87,10 +87,10 @@
     "footnote": "And if the wine runs out before midnight, we also accept donations in kind. 🍷"
   },
   "cta": {
-    "title": "Do you have your invitation?",
-    "p1": "You will soon receive a personalised email with your confirmation link.",
-    "p2": "If you already received it, use the link in that email to confirm your attendance.",
-    "noEmail": "Didn't receive the email? Write to us at"
+    "title": "Didn't receive your invitation?",
+    "p1": "All personalised invitations with the confirmation link have already been sent.",
+    "p2": "If for any reason your email didn't arrive, get in touch and we'll resend it right away.",
+    "noEmail": "Contact us at"
   },
   "footer": {
     "quote": "\"Love looks not with the eyes, but with the mind.\"",
@@ -135,7 +135,7 @@
     "discoverTitle": "✨ Want to know everything about the big day?",
     "discoverSub": "The programme, countdown, venue and all the details are waiting for you on our website. Don't miss it!",
     "discoverCta": "Discover our wedding →",
-    "greeting": "Hello{{email}}, we're so happy you're with us.",
+    "greeting": "Hello, we're so happy you're with us.",
     "name": "Your full name",
     "namePlaceholder": "First and last name",
     "attending": "Will you attend the wedding?",

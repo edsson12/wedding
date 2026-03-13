@@ -87,10 +87,10 @@
     "footnote": "Y si el vino se acaba antes de medianoche, también aceptamos donaciones en especie. 🍷"
   },
   "cta": {
-    "title": "¿Ya tienes tu invitación?",
-    "p1": "Pronto recibirás un correo personalizado con tu enlace de confirmación.",
-    "p2": "Si ya lo recibiste, usa el enlace que está en ese correo para confirmar tu asistencia.",
-    "noEmail": "¿No recibiste el correo? Escríbenos a"
+    "title": "¿No recibiste tu invitación?",
+    "p1": "Ya enviamos todas las invitaciones personalizadas con el enlace de confirmación.",
+    "p2": "Si por alguna razón no te llegó el correo, escríbenos y te lo reenviamos encantados.",
+    "noEmail": "Contáctanos en"
   },
   "footer": {
     "quote": "\"El amor no mira con los ojos, sino con la mente.\"",
@@ -135,7 +135,7 @@
     "discoverTitle": "✨ ¿Quieres saber todo sobre el gran día?",
     "discoverSub": "Programa, cuenta atrás, lugar y todos los detalles te esperan en nuestra web. ¡No te lo pierdas!",
     "discoverCta": "Descubre nuestra boda →",
-    "greeting": "Hola{{email}}, nos hace mucha ilusión contar contigo.",
+    "greeting": "Hola, nos hace mucha ilusión contar contigo.",
     "name": "Tu nombre completo",
     "namePlaceholder": "Nombre y apellidos",
     "attending": "¿Asistirás a la boda?",

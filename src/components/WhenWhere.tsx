@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import ScrollBouquets from "@/components/ScrollBouquets";
 
@@ -63,15 +63,29 @@ const CARD_CONFIG = [
   {
     Icon: VenueIcon,
     link: "https://www.google.com/maps/search/Cam.+la+Raya,+s/n,+50002+Zaragoza,+España",
+    mapSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2981.517318634454!2d-0.8561649!3d41.6445636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5915a6fc693503%3A0x7d1d24fc1201adc8!2sCasalizio%20-%20Restaurante%20-%20Arrocer%C3%ADa%20-%20Eventos!5e0!3m2!1ses!2sco!4v1773293470961!5m2!1ses!2sco",
   },
-  { Icon: HomeIcon, link: "https://www.booking.com/city/es/zaragoza.es.html" },
-  { Icon: MapIcon, link: "https://www.renfe.com" },
+  {
+    Icon: HomeIcon,
+    link: "https://www.booking.com/city/es/zaragoza.es.html",
+    mapSrc:
+      "https://maps.google.com/maps?q=Centro+Histórico+Zaragoza+España&t=&z=14&ie=UTF8&iwloc=B&output=embed",
+  },
+  {
+    Icon: MapIcon,
+    link: "https://www.renfe.com",
+    mapSrc:
+      "https://maps.google.com/maps?q=Estación+de+Zaragoza-Delicias&t=&z=15&ie=UTF8&iwloc=B&output=embed",
+  },
 ];
 
 const TIP_ICONS = ["🏛️", "🥘", "🌿", "🛍️", "🎡"];
 
 export default function WhenWhere() {
   const { t } = useTranslation();
+
+  const [modalCard, setModalCard] = useState<number | null>(null);
 
   const locationCards = CARD_CONFIG.map((cfg, i) => ({
     icon: <cfg.Icon />,
@@ -81,6 +95,7 @@ export default function WhenWhere() {
     sub: t(`whenWhere.cards.${i}.sub`),
     link: cfg.link,
     linkText: t(`whenWhere.cards.${i}.linkText`),
+    mapSrc: cfg.mapSrc,
   }));
 
   const curiosidades = TIP_ICONS.map((icon, i) => ({
@@ -143,9 +158,10 @@ export default function WhenWhere() {
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.1 + i * 0.15 }}
-              className="bg-[--color-cream] rounded-2xl p-6 sm:p-7 border border-[--color-blush]/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col gap-3"
+              onClick={() => setModalCard(i)}
+              className="bg-[--color-cream] rounded-2xl p-6 sm:p-7 border border-[--color-blush]/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col gap-3 cursor-pointer group"
             >
-              <div className="w-12 h-12 rounded-full bg-[--color-peach]/30 flex items-center justify-center text-[--color-wine]">
+              <div className="w-12 h-12 rounded-full bg-[--color-peach]/30 flex items-center justify-center text-[--color-wine] group-hover:bg-[--color-peach]/50 transition-colors">
                 {card.icon}
               </div>
               <p className="font-lato text-xs uppercase tracking-[0.2em] text-[--color-dusty-rose]">
@@ -160,49 +176,16 @@ export default function WhenWhere() {
               <p className="font-lato text-xs text-gray-400 italic">
                 {card.sub}
               </p>
-              <a
-                href={card.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-auto inline-flex items-center gap-1.5 text-[--color-wine] font-lato text-sm font-semibold hover:text-[--color-dusty-rose] transition-colors duration-200"
-              >
-                {card.linkText}
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
+              <div className="mt-auto inline-flex items-center gap-1.5 text-[--color-wine] font-lato text-sm font-semibold group-hover:text-[--color-dusty-rose] transition-colors duration-200">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-              </a>
+                {card.linkText}
+              </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Map */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="rounded-2xl overflow-hidden shadow-xl border border-[--color-blush]/40 mb-14 h-64 sm:h-80 md:h-96"
-        >
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2981.517318634454!2d-0.8561649!3d41.6445636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5915a6fc693503%3A0x7d1d24fc1201adc8!2sCasalizio%20-%20Restaurante%20-%20Arrocer%C3%ADa%20-%20Eventos!5e0!3m2!1ses!2sco!4v1773293470961!5m2!1ses!2sco"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Ubicación de la boda en Zaragoza"
-          />
-        </motion.div>
 
         {/* Tips Zaragoza */}
         <div ref={tipsRef} className="text-center">
@@ -230,6 +213,87 @@ export default function WhenWhere() {
           </div>
         </div>
       </div>
+      {/* Map Modal */}
+      <AnimatePresence>
+        {modalCard !== null && (
+          <motion.div
+            key="modal-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setModalCard(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            style={{ background: "rgba(39,13,22,0.55)", backdropFilter: "blur(5px)" }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.93, y: 24 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.93, y: 24 }}
+              transition={{ duration: 0.28, ease: "easeOut" }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-2xl overflow-hidden shadow-2xl w-full max-w-2xl flex flex-col"
+              style={{ maxHeight: "88vh" }}
+            >
+              {/* Modal header */}
+              <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: "1px solid #EAB5BC55" }}>
+                <div>
+                  <p className="font-lato text-xs uppercase tracking-[0.2em] text-[--color-dusty-rose]">
+                    {locationCards[modalCard].label}
+                  </p>
+                  <h3 className="font-cormorant text-xl font-semibold text-[--color-foreground]">
+                    {locationCards[modalCard].title}
+                  </h3>
+                </div>
+                <button
+                  onClick={() => setModalCard(null)}
+                  aria-label="Cerrar"
+                  className="w-9 h-9 flex items-center justify-center rounded-full transition-colors text-[--color-dusty-rose] hover:bg-[--color-cream]"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Map */}
+              <div className="flex-1" style={{ minHeight: "340px" }}>
+                <iframe
+                  src={locationCards[modalCard].mapSrc}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, display: "block", minHeight: "340px" }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title={locationCards[modalCard].title}
+                />
+              </div>
+
+              {/* Modal footer */}
+              <div
+                className="px-6 py-4 flex items-center justify-between gap-4"
+                style={{ borderTop: "1px solid #EAB5BC55" }}
+              >
+                <p className="font-lato text-xs text-gray-400 italic truncate">
+                  {locationCards[modalCard].sub}
+                </p>
+                <a
+                  href={locationCards[modalCard].link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 inline-flex items-center gap-1.5 text-[--color-wine] font-lato text-sm font-semibold hover:text-[--color-dusty-rose] transition-colors"
+                >
+                  {locationCards[modalCard].linkText}
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.section>
   );
 }

@@ -232,19 +232,27 @@ export default function QuizPage() {
     if (!em || !em.includes("@")) return;
     if (em === checkedEmail) return;
     setCheckedEmail(em);
+    setIdentifyError("");
     try {
       const res = await fetch(
         `/api/quiz/submit?email=${encodeURIComponent(em.toLowerCase().trim())}`
       );
-      if (res.ok) {
+      if (!res.ok) {
         const data = await res.json();
-        setPrevAttempts(data.attempts ?? 0);
-        setPrevBest(data.bestScore ?? null);
-        setPrevTotal(data.totalQuestions ?? 0);
-        if (data.name) setName(data.name);
+        if (data.error === "notInvited") {
+          setIdentifyError(t("quiz.errors.notInvited"));
+        } else if (data.error === "notResponded") {
+          setIdentifyError(t("quiz.errors.notResponded"));
+        }
+        return;
       }
+      const data = await res.json();
+      setPrevAttempts(data.attempts ?? 0);
+      setPrevBest(data.bestScore ?? null);
+      setPrevTotal(data.totalQuestions ?? 0);
+      if (data.name) setName(data.name);
     } catch {
-      // silently ignore
+      // silently ignore network errors
     }
   }
 
@@ -278,20 +286,29 @@ export default function QuizPage() {
         return;
       }
 
-      // Re-check current attempt count
+      // Re-check current attempt count (also validates invitation)
       const statusRes = await fetch(
         `/api/quiz/submit?email=${encodeURIComponent(cleanEmail)}`
       );
-      if (statusRes.ok) {
+      if (!statusRes.ok) {
         const statusData = await statusRes.json();
-        const left = 2 - (statusData.attempts ?? 0);
-        if (left <= 0) {
-          setPrevAttempts(statusData.attempts ?? 2);
-          setPrevBest(statusData.bestScore ?? null);
-          setPrevTotal(statusData.totalQuestions ?? 0);
-          setIdentifyError(t("quiz.identify.noAttempts", { max: 2 }));
-          return;
+        if (statusData.error === "notInvited") {
+          setIdentifyError(t("quiz.errors.notInvited"));
+        } else if (statusData.error === "notResponded") {
+          setIdentifyError(t("quiz.errors.notResponded"));
+        } else {
+          setIdentifyError(t("quiz.errors.generic"));
         }
+        return;
+      }
+      const statusData = await statusRes.json();
+      const left = 2 - (statusData.attempts ?? 0);
+      if (left <= 0) {
+        setPrevAttempts(statusData.attempts ?? 2);
+        setPrevBest(statusData.bestScore ?? null);
+        setPrevTotal(statusData.totalQuestions ?? 0);
+        setIdentifyError(t("quiz.identify.noAttempts", { max: 2 }));
+        return;
       }
 
       setQuestions(qs);

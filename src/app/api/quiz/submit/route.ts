@@ -99,6 +99,21 @@ export async function GET(request: Request) {
 
   if (!email) return NextResponse.json({ attempts: 0, bestScore: null });
 
+  // Validate the email is an invited guest who has responded
+  const invitation = await Invitation.findOne({ email }).lean();
+  if (!invitation) {
+    return NextResponse.json(
+      { error: "notInvited" },
+      { status: 403 }
+    );
+  }
+  if (invitation.status === "pending") {
+    return NextResponse.json(
+      { error: "notResponded" },
+      { status: 403 }
+    );
+  }
+
   const results = await QuizResult.find({ email }).sort({ attempt: 1 }).lean();
   if (results.length === 0) return NextResponse.json({ attempts: 0, bestScore: null });
 
