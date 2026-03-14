@@ -3,7 +3,8 @@
     "bigDay": "Le grand jour",
     "program": "Programme",
     "venue": "Lieu",
-    "gift": "Cadeau"
+    "gift": "Cadeau",
+    "photos": "Nous"
   },
   "hero": {
     "label": "Notre mariage",
@@ -223,5 +224,22 @@
       "noQuestions": "Le quiz n'est pas encore disponible.",
       "generic": "Quelque chose s'est mal passé. Veuillez réessayer."
     }
+  },
+  "photos": {
+    "subtitle": "Nous deux",
+    "title": "Vale & Edu",
+    "captions": [
+      "C'est ainsi que tout a commencé",
+      "Avec élégance et amour",
+      "Entre rires et câlins",
+      "Soutenant notre passion",
+      "La meilleure compagnie",
+      "Voyager ensemble",
+      "Naviguer dans la vie",
+      "Notre coin préféré",
+      "Toujours avec de la musique",
+      "Et pour toujours ensemble",
+      "Pour toujours 💕"
+    ]
   }
 }

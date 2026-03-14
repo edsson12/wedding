@@ -10,6 +10,7 @@ import GiftSection from "@/components/GiftSection";
 import QuizCTA from "@/components/QuizCTA";
 import InvitationCTA from "@/components/InvitationCTA";
 import Footer from "@/components/Footer";
+import PhotoGallery from "@/components/PhotoGallery";
 
 function Slide({ children, tall }: { children: React.ReactNode; tall?: boolean }) {
   return (
@@ -66,6 +67,7 @@ export default function Home() {
       >
         <Slide><Hero /></Slide>
         <Slide><Countdown /></Slide>
+        <Slide><PhotoGallery /></Slide>
         <Slide tall><Timeline /></Slide>
         <Slide tall><WhenWhere /></Slide>
         <Slide><GiftSection /></Slide>

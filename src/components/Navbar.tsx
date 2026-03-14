@@ -9,6 +9,7 @@ export default function Navbar() {
   const { t } = useTranslation();
   const navLinks = [
     { href: "#countdown", label: t("nav.bigDay") },
+    { href: "#fotos", label: t("nav.photos") },
     { href: "#timeline", label: t("nav.program") },
     { href: "#cuando-donde", label: t("nav.venue") },
     { href: "#regalo", label: t("nav.gift") },

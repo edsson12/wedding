@@ -1,5 +1,13 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {};
+const nextConfig: NextConfig = {
+  images: {
+    localPatterns: [
+      {
+        pathname: "/images/**",
+      },
+    ],
+  },
+};
 
 export default nextConfig;
