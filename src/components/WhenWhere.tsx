@@ -80,6 +80,15 @@ const CARD_CONFIG = [
   },
 ];
 
+const DressCodeIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-7 h-7">
+    {/* Bow-tie shape */}
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 8.5l7.2 3.5L4 15.5V8.5z" />
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 8.5l-7.2 3.5L20 15.5V8.5z" />
+    <circle cx="12" cy="12" r="1.3" strokeWidth={1.5} />
+  </svg>
+);
+
 const TIP_ICONS = ["🏛️", "🥘", "🌿", "🛍️", "🎡"];
 
 export default function WhenWhere() {
@@ -194,6 +203,35 @@ export default function WhenWhere() {
             );
           })}
         </div>
+
+        {/* Dress Code Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.55 }}
+          className="flex justify-center mb-14"
+        >
+          <div
+            className="bg-white rounded-2xl p-6 sm:p-8 flex flex-col gap-3 w-full max-w-sm"
+            style={{ border: "1.5px solid #9B6B7E55", boxShadow: "0 2px 16px #9B6B7E18" }}
+          >
+            <div
+              className="w-12 h-12 rounded-xl flex items-center justify-center"
+              style={{ background: "#9B6B7E18", border: "1.5px solid #9B6B7E40", color: "#9B6B7E" }}
+            >
+              <DressCodeIcon />
+            </div>
+            <p className="font-lato text-xs uppercase tracking-[0.2em]" style={{ color: "#9B6B7E" }}>
+              {t("whenWhere.dressCode.label")}
+            </p>
+            <h3 className="font-cormorant text-xl sm:text-2xl font-semibold text-[--color-foreground]">
+              {t("whenWhere.dressCode.title")}
+            </h3>
+            <p className="font-lato text-sm text-gray-500 leading-relaxed">
+              {t("whenWhere.dressCode.body")}
+            </p>
+          </div>
+        </motion.div>
 
         {/* Tips Zaragoza */}
         <div ref={tipsRef}>

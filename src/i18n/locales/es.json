@@ -67,6 +67,11 @@
         "linkText": "Reservar tren en Renfe"
       }
     ],
+    "dressCode": {
+      "label": "Código de vestimenta",
+      "title": "Formal / Cóctel",
+      "body": "Os pedimos que vengáis elegantes, con ropa formal o de cóctel. ¡Queremos que estéis guapísimos en las fotos!"
+    },
     "tipsTitle": "Qué hacer en Zaragoza",
     "tips": [
       "Visita la Basílica del Pilar, icono de la ciudad",
@@ -159,7 +164,7 @@
     "message": "Mensaje para los novios 💕",
     "messageOptional": "(opcional)",
     "messagePlaceholder": "Escribe algo bonito para Vale y Edu...",
-    "send": "Enviar respuesta →",
+    "send": "Ver detalles de la boda →",
     "sending": "Enviando...",
     "errorAttending": "Por favor indica si asistirás o no",
     "errorName": "Por favor escribe tu nombre",

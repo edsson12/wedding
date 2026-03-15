@@ -67,6 +67,11 @@
         "linkText": "Réserver un train sur Renfe"
       }
     ],
+    "dressCode": {
+      "label": "Code vestimentaire",
+      "title": "Formel / Cocktail",
+      "body": "Nous vous invitons à vous habiller avec élégance — tenue formelle ou de cocktail. Nous voulons des photos magnifiques !"
+    },
     "tipsTitle": "Que faire à Saragosse",
     "tips": [
       "Visitez la Basilique du Pilar, symbole de la ville",
@@ -159,7 +164,7 @@
     "message": "Message pour les mariés 💕",
     "messageOptional": "(facultatif)",
     "messagePlaceholder": "Écrivez quelque chose de beau pour Vale et Edu...",
-    "send": "Envoyer ma réponse →",
+    "send": "Voir les détails du mariage →",
     "sending": "Envoi en cours...",
     "errorAttending": "Veuillez indiquer si vous assisterez ou non",
     "errorName": "Veuillez saisir votre nom",

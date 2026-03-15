@@ -67,6 +67,11 @@
         "linkText": "Book train on Renfe"
       }
     ],
+    "dressCode": {
+      "label": "Dress code",
+      "title": "Formal / Cocktail",
+      "body": "We kindly ask you to dress elegantly — formal or cocktail attire. We want everyone looking their best in the photos!"
+    },
     "tipsTitle": "Things to do in Zaragoza",
     "tips": [
       "Visit the Basilica of Our Lady of the Pillar",
@@ -159,7 +164,7 @@
     "message": "Message for the couple 💕",
     "messageOptional": "(optional)",
     "messagePlaceholder": "Write something lovely for Vale and Edu...",
-    "send": "Send response →",
+    "send": "View wedding details →",
     "sending": "Sending...",
     "errorAttending": "Please indicate whether you will attend or not",
     "errorName": "Please enter your name",
