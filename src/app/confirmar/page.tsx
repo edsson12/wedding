@@ -3,6 +3,7 @@
 import "@/i18n";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect, FormEvent, Suspense } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
@@ -16,6 +17,7 @@ interface InvitationData {
 function ConfirmarContent() {
   const { t } = useTranslation();
   const searchParams = useSearchParams();
+  const router = useRouter();
   const token = searchParams.get("token");
 
   const [loading, setLoading] = useState(true);
@@ -93,6 +95,13 @@ function ConfirmarContent() {
     }
   }
 
+  // Redirect if already responded
+  useEffect(() => {
+    if (invitation && invitation.status !== "pending") {
+      router.replace("/");
+    }
+  }, [invitation, router]);
+
   // ── States ──────────────────────────────────────────────────
 
   if (loading)
@@ -125,34 +134,9 @@ function ConfirmarContent() {
       </PageShell>
     );
 
-  if (invitation && invitation.status !== "pending")
-    return (
-      <PageShell>
-        <div style={{ textAlign: "center" }}>
-          <div style={{ fontSize: "48px", marginBottom: "16px" }}>
-            {invitation.status === "accepted" ? "🎉" : "💌"}
-          </div>
-          <h2
-            style={{
-              color: "#9B6B7E",
-              fontWeight: 400,
-              fontSize: "26px",
-              margin: "0 0 12px",
-              fontFamily: "var(--font-parisienne), cursive",
-            }}
-          >
-            {invitation.status === "accepted"
-              ? t("confirmar.alreadyAccepted")
-              : t("confirmar.alreadyDeclined")}
-          </h2>
-          <p style={{ color: "#6B4F57", lineHeight: 1.7, fontSize: "15px" }}>
-            {invitation.status === "accepted"
-              ? t("confirmar.waitingAccepted")
-              : t("confirmar.waitingDeclined")}
-          </p>
-        </div>
-      </PageShell>
-    );
+  if (invitation && invitation.status !== "pending") {
+    return null;
+  }
 
   if (done)
     return (
