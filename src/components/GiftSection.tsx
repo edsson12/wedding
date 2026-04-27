@@ -10,7 +10,7 @@ export default function GiftSection() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [copied, setCopied] = useState(false);
 
-  const iban = "FR76 4061 8803 6800 0408 6218 304";
+  const iban = "FR76 4061 8805 0900 0406 0145 887";
 
   function handleCopy() {
     navigator.clipboard.writeText(iban.replace(/\s/g, "")).then(() => {
